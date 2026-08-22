@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dolphin Prototype — Conversation to Understanding Interaction</title>
+  <style>
+    :root {
+      --bg: #FAFAFA;
+      --surface: #FFFFFF;
+      --surface-raised: #F4F4F5;
+      --foreground: #09090B;
+      --foreground-muted: #71717A;
+      --border: #E4E4E7;
+      --border-strong: #D4D4D8;
+      --accent: #2563EB;
+      --accent-muted: #EFF6FF;
+      --accent-foreground: #1D4ED8;
+      --warning-bg: #FEFCE8;
+      --warning-border: #FEF08A;
+      --warning-text: #854D0E;
+      --danger-bg: #FEF2F2;
+      --danger-border: #FECACA;
+      --danger-text: #991B1B;
+      --success-bg: #F0FDF4;
+      --success-border: #BBF7D0;
+      --success-text: #166534;
+      --radius: 8px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Geist", "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Geist Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      padding: 24px 16px 60px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: var(--surface-raised);
+      color: var(--foreground-muted);
+      border: 1px solid var(--border);
+    }
+
+    .badge.active {
+      background: var(--accent-muted);
+      color: var(--accent-foreground);
+      border-color: var(--accent);
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 8px;
+    }
+
+    .subtitle {
+      color: var(--foreground-muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .grid-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Control Panel */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .panel h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--foreground-muted);
+      margin-bottom: 12px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    button {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--foreground);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    button:hover {
+      background: var(--surface-raised);
+      border-color: var(--border-strong);
+    }
+
+    button.primary {
+      background: var(--foreground);
+      color: var(--surface);
+      border-color: var(--foreground);
+    }
+
+    button.primary:hover {
+      opacity: 0.9;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    /* Interactive Mockup Window */
+    .mockup-window {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    .window-header {
+      background: var(--surface-raised);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .window-title {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      display: inline-block;
+    }
+
+    .window-body {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      min-height: 480px;
+    }
+
+    .window-body.mobile-view {
+      grid-template-columns: 1fr;
+    }
+
+    .column {
+      padding: 20px;
+    }
+
+    .column-conversation {
+      border-right: 1px solid var(--border);
+      background: #FCFCFC;
+    }
+
+    .window-body.mobile-view .column-conversation {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .col-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--foreground-muted);
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Message Bubbles */
+    .msg-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .msg-item {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .msg-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reduced-motion .msg-item {
+      transition: none !important;
+      transform: none !important;
+    }
+
+    .msg-meta {
+      font-size: 11px;
+      color: var(--foreground-muted);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .msg-author {
+      font-weight: 600;
+      color: var(--foreground);
+    }
+
+    .msg-bubble {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* Understanding Cards */
+    .insight-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.3s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reduced-motion .card {
+      transition: none !important;
+      transform: none !important;
+    }
+
+    .card-label {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-process {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-muted);
+    }
+
+    .card-process .card-label {
+      color: var(--accent-foreground);
+    }
+
+    .card-contradiction {
+      border-left: 3px solid #DC2626;
+      background: var(--danger-bg);
+    }
+
+    .card-contradiction .card-label {
+      color: var(--danger-text);
+    }
+
+    .card-translation {
+      border-left: 3px solid #16A34A;
+      background: var(--success-bg);
+    }
+
+    .card-translation .card-label {
+      color: var(--success-text);
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .flow-step {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--foreground);
+    }
+
+    .flow-arrow {
+      color: var(--foreground-muted);
+    }
+
+    .state-inspector {
+      margin-top: 24px;
+      background: #18181B;
+      color: #A1A1AA;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .state-inspector strong {
+      color: #F4F4F5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="app">
+    <header>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <span class="badge">Ticket #4 Prototype</span>
+          <h1>Conversation vs. Understanding Interaction</h1>
+          <p class="subtitle">Verifying state transitions, responsiveness, fallback states, and reduced motion.</p>
+        </div>
+        <div style="text-align:right;">
+          <span class="badge active" id="current-phase-badge">Phase: Idle</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid-layout">
+      <!-- Left Controls -->
+      <aside class="panel">
+        <h2>Interactive Scenario Steps</h2>
+        <div class="btn-group">
+          <button class="primary" id="btn-step-all">▶ Play Full Scenario Auto</button>
+          <button id="btn-step-0">Reset (Idle / Fallback)</button>
+          <button id="btn-step-1">Step 1: Process Detection (Client)</button>
+          <button id="btn-step-2">Step 2: Contradiction Alert ($500 rule)</button>
+          <button id="btn-step-3">Step 3: Technical Translation (Idempotency)</button>
+        </div>
+
+        <h2>Simulation Settings</h2>
+        <div class="toggle-row">
+          <span>Mobile Layout (1-Col)</span>
+          <input type="checkbox" id="toggle-mobile">
+        </div>
+        <div class="toggle-row">
+          <span>Prefers Reduced Motion</span>
+          <input type="checkbox" id="toggle-reduced-motion">
+        </div>
+
+        <div style="margin-top: 16px; font-size: 12px; color: var(--foreground-muted);">
+          <strong>Scenario Context:</strong> SMB Purchasing system conversation between Client and Engineer.
+        </div>
+      </aside>
+
+      <!-- Right Mockup Visual -->
+      <main>
+        <div class="mockup-window" id="mockup-window">
+          <div class="window-header">
+            <div class="window-title">
+              <span class="pulse-dot" id="stream-indicator"></span>
+              <span>Dolphin Live Intelligence</span>
+            </div>
+            <div style="font-family:var(--font-mono); color:var(--foreground-muted);" id="meeting-time">
+              10:14 AM
+            </div>
+          </div>
+
+          <div class="window-body" id="window-body">
+            <!-- Column 1: Conversation -->
+            <div class="column column-conversation">
+              <div class="col-title">
+                <span>Literal Conversation</span>
+                <span class="badge" id="msg-count-badge">0 messages</span>
+              </div>
+              
+              <div class="msg-list" id="msg-container">
+                <div id="fallback-msg" style="color:var(--foreground-muted); font-size:13px; font-style:italic;">
+                  Waiting for speech in meeting...
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 2: Understanding -->
+            <div class="column">
+              <div class="col-title">
+                <span>Dolphin Inferred Context</span>
+                <span class="badge" id="insights-count-badge">0 active</span>
+              </div>
+
+              <div class="insight-list" id="insight-container">
+                <div id="fallback-insight" style="color:var(--foreground-muted); font-size:13px; font-style:italic;">
+                  Listening to extract processes, requirements, and contradictions...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- State Machine Debug Inspector -->
+        <div class="state-inspector">
+          <div><strong>State Machine:</strong> <span id="debug-state-name">IDLE</span></div>
+          <div><strong>Active Requirements:</strong> <span id="debug-reqs">0</span> | <strong>Contradictions:</strong> <span id="debug-contradictions">0</span></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       ISOLATED PURE LOGIC MODULE
+       ========================================================================== */
+    const SCENARIO_DATA = {
+      step1: {
+        time: "10:14 AM",
+        message: {
+          author: "Client",
+          text: "When a purchase comes in, someone reviews it and then the manager approves it before accounting loads it into the ERP."
+        },
+        insights: [
+          {
+            type: "process",
+            title: "Process Detected",
+            body: "Standard purchasing workflow identified.",
+            steps: ["Purchase", "Review", "Manager Approval", "Accounting", "ERP"]
+          },
+          {
+            type: "process",
+            title: "Potential Requirement",
+            body: "Manager approval must occur before ERP entry."
+          }
+        ]
+      },
+      step2: {
+        time: "10:27 AM",
+        message: {
+          author: "Client",
+          text: "Purchases below $500 actually go through automatically."
+        },
+        insights: [
+          {
+            type: "contradiction",
+            title: "Possible Contradiction Detected",
+            body: "Earlier stated: Every purchase needs manager approval.<br>Now stated: Purchases below $500 are automatic.",
+            question: "Suggested Question: Do purchases below $500 bypass manager approval?"
+          }
+        ]
+      },
+      step3: {
+        time: "10:31 AM",
+        message: {
+          author: "Engineer",
+          text: "We will need to make that ERP sync operation idempotent."
+        },
+        insights: [
+          {
+            type: "translation",
+            title: "Technical Translation: Idempotency",
+            body: "Running the same operation multiple times produces the same final result without duplicate entries.",
+            question: "Why it matters: Avoids creating duplicate purchase records if ERP request retries."
+          }
+        ]
+      }
+    };
+
+    class DolphinDemoMachine {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.step = 0;
+        this.messages = [];
+        this.insights = [];
+        this.time = "10:14 AM";
+        this.status = "IDLE";
+      }
+
+      goToStep(stepNumber) {
+        this.reset();
+        if (stepNumber >= 1) {
+          this.step = 1;
+          this.status = "PROCESS_DETECTED";
+          this.time = SCENARIO_DATA.step1.time;
+          this.messages.push(SCENARIO_DATA.step1.message);
+          this.insights.push(...SCENARIO_DATA.step1.insights);
+        }
+        if (stepNumber >= 2) {
+          this.step = 2;
+          this.status = "CONTRADICTION_SURFACED";
+          this.time = SCENARIO_DATA.step2.time;
+          this.messages.push(SCENARIO_DATA.step2.message);
+          this.insights.push(...SCENARIO_DATA.step2.insights);
+        }
+        if (stepNumber >= 3) {
+          this.step = 3;
+          this.status = "TRANSLATION_ACTIVE";
+          this.time = SCENARIO_DATA.step3.time;
+          this.messages.push(SCENARIO_DATA.step3.message);
+          this.insights.push(...SCENARIO_DATA.step3.insights);
+        }
+        return this.getState();
+      }
+
+      getState() {
+        return {
+          step: this.step,
+          status: this.status,
+          time: this.time,
+          messages: [...this.messages],
+          insights: [...this.insights]
+        };
+      }
+    }
+
+    /* ==========================================================================
+       DOM SHELL & RENDERING
+       ========================================================================== */
+    const machine = new DolphinDemoMachine();
+    let autoPlayTimer = null;
+
+    // DOM Elements
+    const msgContainer = document.getElementById("msg-container");
+    const insightContainer = document.getElementById("insight-container");
+    const fallbackMsg = document.getElementById("fallback-msg");
+    const fallbackInsight = document.getElementById("fallback-insight");
+    const timeDisplay = document.getElementById("meeting-time");
+    const phaseBadge = document.getElementById("current-phase-badge");
+    const msgCountBadge = document.getElementById("msg-count-badge");
+    const insightsCountBadge = document.getElementById("insights-count-badge");
+    const debugState = document.getElementById("debug-state-name");
+    const debugReqs = document.getElementById("debug-reqs");
+    const debugContradictions = document.getElementById("debug-contradictions");
+    const toggleMobile = document.getElementById("toggle-mobile");
+    const toggleReducedMotion = document.getElementById("toggle-reduced-motion");
+    const windowBody = document.getElementById("window-body");
+    const appContainer = document.getElementById("app");
+
+    function render(state) {
+      timeDisplay.textContent = state.time;
+      phaseBadge.textContent = `Phase: ${state.status}`;
+      debugState.textContent = state.status;
+      msgCountBadge.textContent = `${state.messages.length} messages`;
+      insightsCountBadge.textContent = `${state.insights.length} active`;
+
+      const contradictionCount = state.insights.filter(i => i.type === "contradiction").length;
+      const reqCount = state.insights.filter(i => i.type === "process").length;
+      debugContradictions.textContent = contradictionCount;
+      debugReqs.textContent = reqCount;
+
+      // Render Messages
+      if (state.messages.length === 0) {
+        msgContainer.innerHTML = '<div style="color:var(--foreground-muted); font-size:13px; font-style:italic;">Waiting for speech in meeting...</div>';
+      } else {
+        msgContainer.innerHTML = "";
+        state.messages.forEach(msg => {
+          const el = document.createElement("div");
+          el.className = "msg-item visible";
+          el.innerHTML = `
+            <div class="msg-meta">
+              <span class="msg-author">${msg.author}</span>
+            </div>
+            <div class="msg-bubble">${msg.text}</div>
+          `;
+          msgContainer.appendChild(el);
+        });
+      }
+
+      // Render Insights
+      if (state.insights.length === 0) {
+        insightContainer.innerHTML = '<div style="color:var(--foreground-muted); font-size:13px; font-style:italic;">Listening to extract processes, requirements, and contradictions...</div>';
+      } else {
+        insightContainer.innerHTML = "";
+        state.insights.forEach(ins => {
+          const card = document.createElement("div");
+          card.className = `card card-${ins.type} visible`;
+          
+          let content = `<div class="card-label"><span>${ins.title}</span></div><div>${ins.body}</div>`;
+          if (ins.steps) {
+            content += `<div class="flow-steps">${ins.steps.map((s, i) => `<span class="flow-step">${s}</span>${i < ins.steps.length - 1 ? '<span class="flow-arrow">→</span>' : ''}`).join('')}</div>`;
+          }
+          if (ins.question) {
+            content += `<div style="margin-top:8px; font-weight:500; font-size:12px; color:var(--foreground);">${ins.question}</div>`;
+          }
+          card.innerHTML = content;
+          insightContainer.appendChild(card);
+        });
+      }
+    }
+
+    // Step Buttons
+    document.getElementById("btn-step-0").addEventListener("click", () => {
+      clearInterval(autoPlayTimer);
+      render(machine.goToStep(0));
+    });
+    document.getElementById("btn-step-1").addEventListener("click", () => {
+      clearInterval(autoPlayTimer);
+      render(machine.goToStep(1));
+    });
+    document.getElementById("btn-step-2").addEventListener("click", () => {
+      clearInterval(autoPlayTimer);
+      render(machine.goToStep(2));
+    });
+    document.getElementById("btn-step-3").addEventListener("click", () => {
+      clearInterval(autoPlayTimer);
+      render(machine.goToStep(3));
+    });
+
+    // Auto Play Scenario
+    document.getElementById("btn-step-all").addEventListener("click", () => {
+      clearInterval(autoPlayTimer);
+      render(machine.goToStep(0));
+      let current = 1;
+      autoPlayTimer = setInterval(() => {
+        if (current <= 3) {
+          render(machine.goToStep(current));
+          current++;
+        } else {
+          clearInterval(autoPlayTimer);
+        }
+      }, 1600);
+    });
+
+    // Mobile View Toggle
+    toggleMobile.addEventListener("change", (e) => {
+      if (e.target.checked) {
+        windowBody.classList.add("mobile-view");
+      } else {
+        windowBody.classList.remove("mobile-view");
+      }
+    });
+
+    // Reduced Motion Toggle
+    toggleReducedMotion.addEventListener("change", (e) => {
+      if (e.target.checked) {
+        appContainer.classList.add("reduced-motion");
+      } else {
+        appContainer.classList.remove("reduced-motion");
+      }
+    });
+
+    // Initial render
+    render(machine.getState());
+  </script>
+</body>
+</html>
