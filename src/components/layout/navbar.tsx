@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Container } from "./container";
 import { Button } from "../ui/button";
+import { DolphinLogo } from "../ui/logo";
 import { PRODUCT_INFO } from "@/content/mock-data";
 import { Menu, X, Github, ArrowRight } from "lucide-react";
 
@@ -22,9 +23,7 @@ export function Navbar() {
       <Container className="flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <a href="#" className="flex items-center gap-2 group rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2">
-            <span className="text-xl font-bold tracking-tight text-foreground group-hover:opacity-90 transition-opacity">
-              {PRODUCT_INFO.name}
-            </span>
+            <DolphinLogo size={28} />
             <span className="text-[10px] uppercase font-semibold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded-full border border-zinc-200 font-mono">
               v1 Preview
             </span>

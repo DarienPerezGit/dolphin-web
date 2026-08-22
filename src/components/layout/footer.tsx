@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "./container";
 import { PRODUCT_INFO } from "@/content/mock-data";
+import { DolphinLogo } from "../ui/logo";
 import { Github, Shield, Cpu, ExternalLink } from "lucide-react";
 
 export function Footer() {
@@ -10,9 +11,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-base text-foreground">
-                {PRODUCT_INFO.name}
-              </span>
+              <DolphinLogo size={24} />
               <span className="text-xs bg-zinc-200/70 text-zinc-700 px-2 py-0.5 rounded font-mono">
                 Local-first
               </span>

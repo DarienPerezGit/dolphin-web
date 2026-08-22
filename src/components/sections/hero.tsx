@@ -11,8 +11,12 @@ import { ArrowRight, ShieldCheck, Sparkles, Github } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
-      {/* Background subtle radial gradient */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-100/80 via-background to-background" />
+      {/* Background subtle radial gradient & fine pattern */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-100/90 via-background to-background" />
+      <div 
+        className="absolute inset-0 -z-10 opacity-[0.025] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" 
+        aria-hidden="true" 
+      />
 
       <Container className="space-y-10 text-center">
         {/* Badge & Pill */}
