@@ -42,11 +42,52 @@ export const DEMO_STEPS: DemoStep[] = [
   },
 ];
 
+export const MEETING_PARTICIPANTS = [
+  {
+    id: "p-1",
+    name: "Sarah Jenkins",
+    roleTitle: "VP Operations (Client)",
+    role: "Client" as const,
+    avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80",
+    isSpeaking: true,
+    isMuted: false,
+  },
+  {
+    id: "p-2",
+    name: "Alex Rivera",
+    roleTitle: "Lead Solutions Architect",
+    role: "Engineer" as const,
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
+    isSpeaking: false,
+    isMuted: false,
+  },
+  {
+    id: "p-3",
+    name: "David Kim",
+    roleTitle: "ERP Integration Lead",
+    role: "Engineer" as const,
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    isSpeaking: false,
+    isMuted: true,
+  },
+  {
+    id: "p-4",
+    name: "Elena Gomez",
+    roleTitle: "Finance & Audit Director",
+    role: "Accounting" as const,
+    avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80",
+    isSpeaking: false,
+    isMuted: false,
+  },
+];
+
 export const CANONICAL_TRANSCRIPT: TranscriptEntry[] = [
   {
     id: "tx-1",
     timestamp: "14:30",
     speaker: "Sarah Jenkins",
+    roleTitle: "VP Operations (Client)",
+    avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80",
     role: "Client",
     text: "When a purchase comes in, someone reviews it and then the manager approves it before accounting loads it into the ERP.",
     highlightedInSteps: [1],
@@ -55,6 +96,8 @@ export const CANONICAL_TRANSCRIPT: TranscriptEntry[] = [
     id: "tx-2",
     timestamp: "14:32",
     speaker: "Alex Rivera",
+    roleTitle: "Lead Solutions Architect",
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
     role: "Engineer",
     text: "We'll need to make that ERP sync operation idempotent to prevent duplicate order generation.",
     highlightedInSteps: [2],
@@ -63,6 +106,8 @@ export const CANONICAL_TRANSCRIPT: TranscriptEntry[] = [
     id: "tx-3",
     timestamp: "14:35",
     speaker: "Sarah Jenkins",
+    roleTitle: "VP Operations (Client)",
+    avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80",
     role: "Client",
     text: "Purchases below $500 actually go through automatically without waiting for manager sign-off.",
     highlightedInSteps: [3],

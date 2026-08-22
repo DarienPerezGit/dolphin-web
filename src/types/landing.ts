@@ -5,6 +5,8 @@ export interface TranscriptEntry {
   timestamp: string;
   speaker: string;
   role: SpeakerRole;
+  roleTitle?: string;
+  avatarUrl?: string;
   text: string;
   highlightedInSteps?: number[];
 }

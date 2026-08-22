@@ -24,16 +24,13 @@ export function Footer() {
 
           <div className="flex flex-wrap gap-6 text-xs font-medium">
             <a href="#demo" className="hover:text-foreground transition-colors">
-              Product Demo
+              Demostración en Vivo
             </a>
-            <a href="#capabilities" className="hover:text-foreground transition-colors">
-              Capabilities
+            <a href="#intelligence" className="hover:text-foreground transition-colors">
+              Capacidades de Inteligencia
             </a>
             <a href="#privacy" className="hover:text-foreground transition-colors">
-              Privacy & Local AI
-            </a>
-            <a href="#how-it-works" className="hover:text-foreground transition-colors">
-              Architecture
+              Privacidad y QVAC
             </a>
             <a
               href={PRODUCT_INFO.githubUrl}
