@@ -74,3 +74,22 @@ Load the applicable skill before work and follow the exact path supplied by the 
 | Documentation | Cognitive documentation design guidance, when available | Concise, reviewable documentation changes |
 
 Use only skills that are available and relevant to the task. This table routes work; [Product](docs/PRODUCT.md), [Design](docs/DESIGN.md), and [Engineering](docs/ENGINEERING.md) remain the source of truth for requirements.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live in GitHub Issues and are managed with the `gh` CLI.
+See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the default labels `needs-triage`, `needs-info`, `ready-for-agent`,
+`ready-for-human`, and `wontfix`.
+See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+This is a single-context repository. Read `CONTEXT.md` and relevant ADRs
+when they exist.
+See `docs/agents/domain.md`.
