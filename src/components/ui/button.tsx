@@ -14,7 +14,7 @@ export function Button({
   size = "md",
   ...props
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+  const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
   
   const variants = {
     primary: "bg-foreground text-background hover:bg-foreground/90 shadow-sm",

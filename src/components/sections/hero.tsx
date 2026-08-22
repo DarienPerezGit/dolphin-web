@@ -51,8 +51,8 @@ export function Hero() {
           <a
             href={PRODUCT_INFO.githubUrl}
             target="_blank"
-            rel="noreferrer"
-            className="inline-flex"
+            rel="noopener noreferrer"
+            className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
           >
             <Button variant="outline" size="lg" className="gap-2">
               <Github className="w-4 h-4" />

@@ -21,11 +21,11 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-background/85 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="#" className="flex items-center gap-2 group rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2">
             <span className="text-xl font-bold tracking-tight text-foreground group-hover:opacity-90 transition-opacity">
               {PRODUCT_INFO.name}
             </span>
-            <span className="text-[10px] uppercase font-semibold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded-full border border-zinc-200">
+            <span className="text-[10px] uppercase font-semibold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded-full border border-zinc-200 font-mono">
               v1 Preview
             </span>
           </a>
@@ -35,7 +35,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
+                className="text-sm font-medium text-foreground-muted hover:text-foreground transition-colors rounded-md py-1 px-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1"
               >
                 {link.label}
               </a>
@@ -47,8 +47,8 @@ export function Navbar() {
           <a
             href={PRODUCT_INFO.githubUrl}
             target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground-muted hover:text-foreground px-3 py-2 rounded-md hover:bg-accent-muted transition-colors"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground-muted hover:text-foreground px-3 py-2 rounded-md hover:bg-accent-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1"
             aria-label="View on GitHub"
           >
             <Github className="w-4 h-4" />
@@ -71,7 +71,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-foreground-muted hover:text-foreground rounded-lg hover:bg-accent-muted"
+          className="md:hidden p-2 text-foreground-muted hover:text-foreground rounded-lg hover:bg-accent-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
           aria-expanded={mobileMenuOpen}
           aria-label="Toggle navigation menu"
         >
@@ -88,7 +88,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-foreground py-1 px-2 rounded-md hover:bg-accent-muted transition-colors"
+                className="text-base font-medium text-foreground py-1 px-2 rounded-md hover:bg-accent-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
               >
                 {link.label}
               </a>
@@ -108,8 +108,8 @@ export function Navbar() {
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground-muted hover:text-foreground py-2"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground-muted hover:text-foreground py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
             >
               <Github className="w-4 h-4" />
               <span>View repository on GitHub</span>

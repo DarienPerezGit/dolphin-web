@@ -28,13 +28,25 @@ export function TranscriptMessage({
     Accounting: "bg-emerald-50 text-emerald-700 border-emerald-200",
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onSelect?.();
+    }
+  };
+
   return (
     <div
+      role="button"
+      tabIndex={0}
       onClick={onSelect}
+      onKeyDown={handleKeyDown}
+      aria-pressed={isHighlighted}
+      aria-label={`Mensaje de ${entry.speaker} (${entry.role}) a las ${entry.timestamp}: "${entry.text}"`}
       className={cn(
-        "p-3.5 rounded-xl border transition-all cursor-pointer text-left",
+        "p-3.5 rounded-xl border transition-all cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1",
         isHighlighted
-          ? "bg-surface-raised border-foreground/30 shadow-sm ring-1 ring-foreground/10"
+          ? "bg-surface-raised border-foreground/40 shadow-sm ring-1 ring-foreground/20"
           : "bg-surface/60 border-border/80 hover:bg-surface-raised hover:border-border"
       )}
     >

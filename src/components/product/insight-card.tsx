@@ -56,14 +56,26 @@ export function InsightCard({
 
   const config = typeConfig[insight.type];
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onSelect?.();
+    }
+  };
+
   return (
     <div
+      role="button"
+      tabIndex={0}
       onClick={onSelect}
+      onKeyDown={handleKeyDown}
+      aria-pressed={isActive}
+      aria-label={`${config.tag}: ${insight.title}. ${insight.summary}`}
       className={cn(
-        "p-4 rounded-xl border border-l-4 bg-surface-raised shadow-xs transition-all cursor-pointer text-left",
+        "p-4 rounded-xl border border-l-4 bg-surface-raised shadow-xs transition-all cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1",
         config.accentBorder,
         isActive
-          ? "ring-1 ring-foreground/20 shadow-md"
+          ? "ring-1 ring-foreground/30 shadow-md border-foreground/30"
           : "hover:border-border hover:shadow-sm"
       )}
     >

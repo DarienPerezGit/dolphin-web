@@ -23,23 +23,23 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap gap-6 text-xs font-medium">
-            <a href="#demo" className="hover:text-foreground transition-colors">
+            <a href="#demo" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
               Product Demo
             </a>
-            <a href="#capabilities" className="hover:text-foreground transition-colors">
+            <a href="#capabilities" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
               Capabilities
             </a>
-            <a href="#privacy" className="hover:text-foreground transition-colors">
+            <a href="#privacy" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
               Privacy & Local AI
             </a>
-            <a href="#how-it-works" className="hover:text-foreground transition-colors">
+            <a href="#how-it-works" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
               Architecture
             </a>
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
             >
               <span>GitHub</span>
               <ExternalLink className="w-3 h-3" />
