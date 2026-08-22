@@ -11,29 +11,25 @@ export function Navbar() {
 
   const navLinks = [
     { label: "Demostración", href: "#demo" },
-    { label: "Inteligencia", href: "#intelligence" },
+    { label: "Traducción", href: "#translation" },
+    { label: "Contradicciones", href: "#contradiction" },
     { label: "Privacidad", href: "#privacy" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-background/85 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between">
-        <div className="flex items-center gap-8">
-          <a href="#" className="flex items-center gap-2 group">
-            <span className="text-xl font-bold tracking-tight text-foreground group-hover:opacity-90 transition-opacity">
-              {PRODUCT_INFO.name}
-            </span>
-            <span className="text-[10px] uppercase font-semibold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded-full border border-zinc-200">
-              v1 Preview
-            </span>
+    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-zinc-100">
+      <Container className="flex h-[84px] items-center justify-between">
+        <div className="flex items-center gap-10">
+          <a href="#" className="text-xl font-bold tracking-tight text-zinc-950 hover:opacity-90 transition-opacity">
+            {PRODUCT_INFO.name}
           </a>
 
-          <nav className="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center gap-8" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
+                className="text-sm font-medium text-zinc-500 hover:text-zinc-950 transition-colors"
               >
                 {link.label}
               </a>
@@ -41,27 +37,24 @@ export function Navbar() {
           </nav>
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-4">
           <a
             href={PRODUCT_INFO.githubUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground-muted hover:text-foreground px-3 py-2 rounded-md hover:bg-accent-muted transition-colors"
+            className="text-sm font-medium text-zinc-500 hover:text-zinc-950 px-3 py-2 transition-colors"
             aria-label="View on GitHub"
           >
-            <Github className="w-4 h-4" />
-            <span>GitHub</span>
+            GitHub
           </a>
           
           <Button
-            size="sm"
             onClick={() => {
               document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="gap-1.5"
+            className="min-h-[44px] px-5 rounded-[10px] bg-zinc-950 text-white hover:bg-zinc-800 text-sm font-medium transition-colors"
           >
-            <span>Watch demo</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>Ver demostración</span>
           </Button>
         </div>
 
@@ -69,7 +62,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-foreground-muted hover:text-foreground rounded-lg hover:bg-accent-muted"
+          className="md:hidden p-2 text-zinc-500 hover:text-zinc-950 rounded-lg"
           aria-expanded={mobileMenuOpen}
           aria-label="Toggle navigation menu"
         >
@@ -79,38 +72,37 @@ export function Navbar() {
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-border bg-background px-4 py-6 space-y-4">
+        <div className="md:hidden border-b border-zinc-100 bg-white px-6 py-6 space-y-4">
           <nav className="flex flex-col space-y-3">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-foreground py-1 px-2 rounded-md hover:bg-accent-muted transition-colors"
+                className="text-base font-medium text-zinc-950 py-1.5"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          <div className="pt-4 border-t border-border flex flex-col gap-2">
+          <div className="pt-4 border-t border-zinc-100 flex flex-col gap-3">
             <Button
-              className="w-full justify-center"
+              className="w-full justify-center min-h-[48px] rounded-[10px] bg-zinc-950 text-white"
               onClick={() => {
                 setMobileMenuOpen(false);
                 document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Watch demo
+              Ver demostración
             </Button>
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground-muted hover:text-foreground py-2"
+              className="inline-flex items-center justify-center text-sm font-medium text-zinc-600 hover:text-zinc-950 py-2"
             >
-              <Github className="w-4 h-4" />
-              <span>View repository on GitHub</span>
+              Ver en GitHub
             </a>
           </div>
         </div>
