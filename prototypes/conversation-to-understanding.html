@@ -6,7 +6,7 @@
   <title>Dolphin Prototype — Conversation to Understanding Interaction</title>
   <style>
     :root {
-      --bg: #FAFAFA;
+      --background: #FAFAFA;
       --surface: #FFFFFF;
       --surface-raised: #F4F4F5;
       --foreground: #09090B;
@@ -16,12 +16,14 @@
       --accent: #2563EB;
       --accent-muted: #EFF6FF;
       --accent-foreground: #1D4ED8;
+      --warning: #854D0E;
       --warning-bg: #FEFCE8;
       --warning-border: #FEF08A;
-      --warning-text: #854D0E;
+      --danger: #DC2626;
       --danger-bg: #FEF2F2;
       --danger-border: #FECACA;
       --danger-text: #991B1B;
+      --success: #16A34A;
       --success-bg: #F0FDF4;
       --success-border: #BBF7D0;
       --success-text: #166534;
@@ -37,7 +39,7 @@
     }
 
     body {
-      background-color: var(--bg);
+      background-color: var(--background);
       color: var(--foreground);
       font-family: var(--font-sans);
       line-height: 1.5;
@@ -194,7 +196,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #10B981;
+      background: var(--success);
       display: inline-block;
     }
 
@@ -214,7 +216,7 @@
 
     .column-conversation {
       border-right: 1px solid var(--border);
-      background: #FCFCFC;
+      background: var(--background);
     }
 
     .window-body.mobile-view .column-conversation {
@@ -329,7 +331,7 @@
     }
 
     .card-contradiction {
-      border-left: 3px solid #DC2626;
+      border-left: 3px solid var(--danger);
       background: var(--danger-bg);
     }
 
@@ -338,7 +340,7 @@
     }
 
     .card-translation {
-      border-left: 3px solid #16A34A;
+      border-left: 3px solid var(--success);
       background: var(--success-bg);
     }
 
@@ -357,7 +359,7 @@
     }
 
     .flow-step {
-      background: #FFFFFF;
+      background: var(--surface);
       border: 1px solid var(--border);
       padding: 2px 6px;
       border-radius: 4px;
@@ -370,8 +372,9 @@
 
     .state-inspector {
       margin-top: 24px;
-      background: #18181B;
-      color: #A1A1AA;
+      background: var(--surface-raised);
+      color: var(--foreground-muted);
+      border: 1px solid var(--border);
       font-family: var(--font-mono);
       font-size: 12px;
       padding: 12px 16px;
@@ -380,7 +383,14 @@
     }
 
     .state-inspector strong {
-      color: #F4F4F5;
+      color: var(--foreground);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .msg-item, .card {
+        transition: none !important;
+        transform: none !important;
+      }
     }
   </style>
 </head>
