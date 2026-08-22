@@ -22,6 +22,7 @@ Read these documents before changing the site:
 | --- | --- |
 | [Product brief](docs/PRODUCT.md) | Positioning, audience, approved claims, capabilities, scenarios, demo script, and hackathon boundary |
 | [Design system](docs/DESIGN.md) | Visual direction, tokens, layout, mockups, accessibility, motion, and visual constraints |
+| [Mock-data contract](docs/MOCK_DATA.md) | Canonical typed mock-data schema and SMB purchasing scenario specification |
 | [Acceptance gate](docs/ACCEPTANCE.md) | Observable evidence for responsive, accessibility, contrast, performance, and Vercel preview release |
 | [Engineering guide](docs/ENGINEERING.md) | Intended stack, architecture, performance, scripts, quality, security, and collaboration rules |
 | [Agent instructions](AGENTS.md) | Operational reading order, decision hierarchy, scope rules, validation, and skill routing |
