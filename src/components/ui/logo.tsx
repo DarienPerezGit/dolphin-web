@@ -7,16 +7,19 @@ interface LogoProps {
   size?: number | "sm" | "md" | "lg";
   showBadge?: boolean;
   showText?: boolean;
+  textColor?: string;
 }
 
 export function DolphinLogo({
   className,
   size = 34,
   showText = true,
+  textColor = "text-white",
 }: {
   className?: string;
   size?: number;
   showText?: boolean;
+  textColor?: string;
 }) {
   return (
     <div className={cn("inline-flex items-center gap-3 select-none group", className)}>
@@ -30,7 +33,7 @@ export function DolphinLogo({
       />
 
       {showText && (
-        <span className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-stone-900 leading-none">
+        <span className={cn("font-sans text-xl sm:text-2xl font-semibold tracking-tight leading-none", textColor)}>
           Dolphin
         </span>
       )}
@@ -42,6 +45,7 @@ export function Logo({
   className,
   size = "md",
   showBadge = true,
+  textColor = "text-white",
 }: LogoProps) {
   const pixelSizes = {
     sm: 28,
@@ -50,5 +54,5 @@ export function Logo({
   };
   const finalSize = typeof size === "number" ? size : pixelSizes[size];
 
-  return <DolphinLogo className={className} size={finalSize} showText={true} />;
+  return <DolphinLogo className={className} size={finalSize} showText={true} textColor={textColor} />;
 }

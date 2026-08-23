@@ -17,83 +17,96 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-stone-200/80 bg-stone-50/90 backdrop-blur-md">
-      <Container className="flex h-20 max-w-6xl items-center justify-between">
-        {/* Left: Brand Identity with 42px Logo */}
-        <div className="flex items-center gap-10">
-          <a
-            href="#"
-            className="flex items-center gap-3 focus-visible:outline-none"
-            aria-label="Dolphin Inicio"
-          >
-            <DolphinLogo size={42} />
-          </a>
-
-          {/* Clean 3-Item Navigation (Strict Sans-serif, Clean Whitespace) */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Navegación Principal">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-sans font-medium text-stone-600 hover:text-stone-950 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-
-        {/* Right: Clean GitHub Link */}
-        <div className="hidden md:flex items-center gap-4">
-          <a
-            href={PRODUCT_INFO.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-sans font-medium text-stone-600 hover:text-stone-950 transition-colors"
-          >
-            GitHub
-          </a>
-        </div>
-
-        {/* Mobile menu toggle */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-stone-600 hover:text-stone-950 rounded-lg"
-          aria-expanded={mobileMenuOpen}
-          aria-label="Alternar menú de navegación"
+    <div className="sticky top-0 z-50 w-full">
+      {/* 1. Top Banner (Subtle dark background & pure immersion) */}
+      <div className="flex h-10 w-full items-center justify-center border-b border-white/10 bg-black/40 px-4 text-center text-xs sm:text-sm font-medium text-white backdrop-blur-md">
+        <a
+          href="#demo"
+          className="transition-opacity hover:opacity-85 inline-flex items-center gap-1"
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-      </Container>
+          <span>Nueva versión Dolphin local disponible. Ver novedades →</span>
+        </a>
+      </div>
 
-      {/* Mobile dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-stone-200 bg-stone-50 px-6 py-4 space-y-3">
-          <nav className="flex flex-col space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-sans font-medium text-stone-800 hover:text-stone-950 py-1"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <div className="pt-2 border-t border-stone-200">
+      {/* 2. Transparent Navbar (Completely see-through to the ocean video) */}
+      <header className="w-full border-b border-white/10 bg-transparent">
+        <Container className="flex h-20 max-w-6xl items-center justify-between">
+          {/* Left: Brand Identity with White Text */}
+          <div className="flex items-center gap-10">
+            <a
+              href="#"
+              className="flex items-center gap-3 focus-visible:outline-none"
+              aria-label="Dolphin Inicio"
+            >
+              <DolphinLogo size={42} textColor="text-white" />
+            </a>
+
+            {/* Clean 3-Item Navigation in Pure White */}
+            <nav className="hidden md:flex items-center gap-8" aria-label="Navegación Principal">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-sans font-medium text-white/85 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Right: Clean GitHub Link in White */}
+          <div className="hidden md:flex items-center gap-4">
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-sans font-medium text-stone-600 hover:text-stone-950 block py-1"
+              className="text-sm font-sans font-medium text-white/85 hover:text-white transition-colors"
             >
               GitHub
             </a>
           </div>
-        </div>
-      )}
-    </header>
+
+          {/* Mobile menu toggle in White */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-white hover:text-white/80 rounded-lg"
+            aria-expanded={mobileMenuOpen}
+            aria-label="Alternar menú de navegación"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </Container>
+
+        {/* Mobile dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-white/10 bg-slate-950/90 backdrop-blur-xl px-6 py-4 space-y-3">
+            <nav className="flex flex-col space-y-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sm font-sans font-medium text-white hover:text-white/80 py-1"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <div className="pt-2 border-t border-white/10">
+              <a
+                href={PRODUCT_INFO.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-sans font-medium text-white/80 hover:text-white block py-1"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        )}
+      </header>
+    </div>
   );
 }
