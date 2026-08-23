@@ -19,25 +19,25 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground flex flex-col font-sans relative">
         <Navbar />
 
-        {/* High-Intensity Top Edge Diffusion (Directly below 80px Navbar, strong blur) */}
+        {/* Pure Multi-Stop Top Feather Fade (Zero rectangular bounding box cut) */}
         <div 
-          className="fixed top-20 inset-x-0 h-10 sm:h-12 pointer-events-none z-40 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/90 to-transparent backdrop-blur-xl" 
+          className="fixed top-20 inset-x-0 h-10 sm:h-12 pointer-events-none z-30 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/75 via-[#FBF9F5]/30 to-transparent" 
           aria-hidden="true" 
         />
 
-        {/* High-Intensity Bottom Edge Diffusion (Strong blur, same compact reach) */}
+        {/* Pure Multi-Stop Bottom Feather Fade (Zero rectangular bounding box cut) */}
         <div 
-          className="fixed bottom-0 inset-x-0 h-10 sm:h-12 pointer-events-none z-40 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/90 to-transparent backdrop-blur-xl" 
+          className="fixed bottom-0 inset-x-0 h-10 sm:h-12 pointer-events-none z-30 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/75 via-[#FBF9F5]/30 to-transparent" 
           aria-hidden="true" 
         />
 
-        {/* High-Intensity Lateral Diffusions (Left & Right with backdrop-blur) */}
+        {/* Seamless Lateral Feather Fades */}
         <div 
-          className="fixed left-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-40 bg-gradient-to-r from-[#FBF9F5] via-[#FBF9F5]/80 to-transparent backdrop-blur-md" 
+          className="fixed left-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-30 bg-gradient-to-r from-[#FBF9F5] via-[#FBF9F5]/50 to-transparent" 
           aria-hidden="true" 
         />
         <div 
-          className="fixed right-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-40 bg-gradient-to-l from-[#FBF9F5] via-[#FBF9F5]/80 to-transparent backdrop-blur-md" 
+          className="fixed right-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-30 bg-gradient-to-l from-[#FBF9F5] via-[#FBF9F5]/50 to-transparent" 
           aria-hidden="true" 
         />
 
