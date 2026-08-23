@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React from "react";
@@ -9,15 +8,21 @@ import { PRODUCT_INFO } from "@/content/mock-data";
 export function Hero() {
   return (
     <section className="relative flex min-h-[calc(100vh-80px)] items-center justify-center overflow-hidden py-20 md:py-28 px-4 sm:px-6">
-      {/* Background Image with Depth Gradient Overlay */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <img
-          src="/images/fondo-hero.avif"
-          alt="Ocean Background Texture"
-          className="h-full w-full object-cover object-center scale-105 transition-transform duration-1000"
-        />
-        {/* Soft overlay gradient to ensure high contrast and seamless section transition */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-[#FBF9F5]" />
+      {/* Fullscreen Looping Video Background */}
+      <div className="absolute inset-0 w-full h-full -z-20 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/videos/water.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Soft Multi-Layer Contrast & Section Blend Overlay */}
+        <div className="absolute inset-0 bg-black/30 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-[#FBF9F5]" />
       </div>
 
       <Container className="max-w-5xl flex justify-center relative z-10">
