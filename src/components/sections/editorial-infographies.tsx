@@ -4,7 +4,7 @@ import { Container } from "../layout/container";
 
 export function EditorialInfographies() {
   return (
-    <section className="py-16 md:py-24 bg-[#FBF9F5] space-y-20 border-b border-[#D8D2C5]">
+    <section id="infografias" className="py-16 md:py-24 bg-[#FBF9F5] space-y-20 border-b border-[#D8D2C5] scroll-mt-14">
       {/* Plate 01: Full-Screen Central Showcase */}
       <Container className="max-w-[1340px] space-y-6">
         {/* Minimal Folio Header */}
