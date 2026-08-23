@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React from "react";
@@ -7,15 +8,25 @@ import { PRODUCT_INFO } from "@/content/mock-data";
 
 export function Hero() {
   return (
-    <section className="relative flex items-center justify-center py-20 md:py-28 px-4 sm:px-6">
-      <Container className="max-w-5xl flex justify-center">
-        
+    <section className="relative flex min-h-[calc(100vh-80px)] items-center justify-center overflow-hidden py-20 md:py-28 px-4 sm:px-6">
+      {/* Background Image with Depth Gradient Overlay */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <img
+          src="/images/fondo-hero.avif"
+          alt="Ocean Background Texture"
+          className="h-full w-full object-cover object-center scale-105 transition-transform duration-1000"
+        />
+        {/* Soft overlay gradient to ensure high contrast and seamless section transition */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-[#FBF9F5]" />
+      </div>
+
+      <Container className="max-w-5xl flex justify-center relative z-10">
         {/* Dark Glassmorphic Card Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[960px] rounded-[24px] bg-slate-950/45 px-6 py-16 sm:px-12 sm:py-20 text-center backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/40"
+          className="w-full max-w-[960px] rounded-[24px] bg-slate-950/45 px-6 py-16 sm:px-12 sm:py-20 text-center backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50"
         >
           {/* Hero Title */}
           <h1 className="font-sans text-[clamp(40px,5vw,68px)] font-medium leading-[1.05] tracking-[-0.02em] text-white">
@@ -52,7 +63,6 @@ export function Hero() {
             </a>
           </div>
         </motion.div>
-
       </Container>
     </section>
   );
