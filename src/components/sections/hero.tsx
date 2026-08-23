@@ -1,28 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Container } from "../layout/container";
 import { PRODUCT_INFO } from "@/content/mock-data";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Guarantee video playback even on aggressive autoplay policy browsers
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {
+        // Fallback or ignore if autoplay restricted
+      });
+    }
+  }, []);
+
   return (
     <section className="relative flex min-h-[calc(100vh-80px)] items-center justify-center overflow-hidden py-20 md:py-28 px-4 sm:px-6">
-      {/* Fullscreen Looping Video Background */}
-      <div className="absolute inset-0 w-full h-full -z-20 overflow-hidden">
+      {/* Fullscreen Video Background Container (z-0 to ensure it stays in front of page background) */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
         >
           <source src="/videos/water.mp4" type="video/mp4" />
         </video>
         
-        {/* Soft Multi-Layer Contrast & Section Blend Overlay */}
-        <div className="absolute inset-0 bg-black/30 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-[#FBF9F5]" />
+        {/* Soft Multi-Layer Contrast & Transition Gradient */}
+        <div className="absolute inset-0 bg-black/35 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#FBF9F5]" />
       </div>
 
       <Container className="max-w-5xl flex justify-center relative z-10">
@@ -31,7 +46,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[960px] rounded-[24px] bg-slate-950/45 px-6 py-16 sm:px-12 sm:py-20 text-center backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50"
+          className="w-full max-w-[960px] rounded-[24px] bg-slate-950/50 px-6 py-16 sm:px-12 sm:py-20 text-center backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50"
         >
           {/* Hero Title */}
           <h1 className="font-sans text-[clamp(40px,5vw,68px)] font-medium leading-[1.05] tracking-[-0.02em] text-white">
