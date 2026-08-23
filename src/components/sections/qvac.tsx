@@ -1,66 +1,62 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Section } from "../layout/section";
 import { Badge } from "../ui/badge";
-import { Cpu, Zap, Shield, Sparkles } from "lucide-react";
 
 export function QvacSection() {
   return (
-    <Section id="qvac" hasBackground>
-      <Container className="space-y-12">
-        <div className="max-w-4xl mx-auto p-8 sm:p-10 rounded-3xl border border-border bg-surface-raised space-y-8 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-border/80">
-            <div className="space-y-1.5">
-              <Badge variant="neutral" className="bg-zinc-100 text-zinc-800">
-                Sponsor & Infraestructura
-              </Badge>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-                Potenciado localmente por QVAC
+    <section id="qvac" className="py-16 md:py-24 bg-paper border-b border-border">
+      <Container className="space-y-12 max-w-5xl">
+        <div className="p-8 sm:p-10 rounded-[4px] border border-border bg-paper-light space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border-subtle">
+            <div className="space-y-1">
+              <Badge variant="neutral">§ 08.0 / TECHNICAL MONOGRAPH</Badge>
+              <h2 className="font-serif text-2xl sm:text-3xl text-foreground font-normal tracking-tight">
+                Powered on-device by QVAC
               </h2>
             </div>
 
-            <span className="text-xs font-mono text-zinc-600 px-3 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 w-fit">
+            <span className="font-mono text-[10px] text-foreground-muted px-2.5 py-1 rounded-[2px] bg-paper border border-border w-fit uppercase tracking-widest">
               By Tether
             </span>
           </div>
 
-          <p className="text-sm sm:text-base text-foreground/85 leading-relaxed">
-            Dolphin está diseñado para utilizar <strong>QVAC by Tether</strong> como su capa de inferencia de IA local, permitiendo que la transcripción acústica, el razonamiento contextual, la generación de embeddings y la recuperación semántica se ejecuten en tu propio hardware sin dependencias en la nube.
+          <p className="font-sans text-xs sm:text-sm text-foreground-muted leading-relaxed">
+            Dolphin leverages <strong>QVAC by Tether</strong> as its on-device cognitive substrate—enabling neural acoustic transcription, contextual graph reasoning, and semantic lookup to execute directly on consumer silicon with zero cloud dependencies.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-            <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-2">
-              <div className="p-2 rounded-lg bg-white border border-border w-fit text-foreground">
-                <Cpu className="w-4 h-4 text-emerald-600" />
-              </div>
-              <h4 className="text-sm font-semibold text-foreground">Inferencia On-Device</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 font-sans">
+            <div className="p-4 rounded-[4px] bg-paper border border-border space-y-1.5">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-editorial-sage font-semibold block">
+                01. Hardware Efficiency
+              </span>
+              <h4 className="font-serif text-sm font-semibold text-foreground">Compact Quantization</h4>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                Modelos optimizados para hardware local con mínimo consumo de memoria y CPU/GPU.
+                Optimized footprint running comfortably on standard desktop RAM and low-power hardware.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-2">
-              <div className="p-2 rounded-lg bg-white border border-border w-fit text-foreground">
-                <Zap className="w-4 h-4 text-amber-600" />
-              </div>
-              <h4 className="text-sm font-semibold text-foreground">Ultra Baja Latencia</h4>
+            <div className="p-4 rounded-[4px] bg-paper border border-border space-y-1.5">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-editorial-ochre font-semibold block">
+                02. Pipeline Speed
+              </span>
+              <h4 className="font-serif text-sm font-semibold text-foreground">Sub-Second Turnaround</h4>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                Procesamiento de audio continuo en milisegundos para detectar contradicciones al instante.
+                Continuous acoustic parsing in milliseconds to surface queries before discussion topics shift.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-2">
-              <div className="p-2 rounded-lg bg-white border border-border w-fit text-foreground">
-                <Shield className="w-4 h-4 text-blue-600" />
-              </div>
-              <h4 className="text-sm font-semibold text-foreground">Soberanía de Datos</h4>
+            <div className="p-4 rounded-[4px] bg-paper border border-border space-y-1.5">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-editorial-lavender font-semibold block">
+                03. Data Sovereignty
+              </span>
+              <h4 className="font-serif text-sm font-semibold text-foreground">Zero External Exposure</h4>
               <p className="text-xs text-foreground-muted leading-relaxed">
-                Cumplimiento normativo estricto sin necesidad de acuerdos de procesamiento de datos en la nube.
+                Native compliance for air-gapped workstations, defense, medical, and legal negotiations.
               </p>
             </div>
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

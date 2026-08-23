@@ -8,19 +8,9 @@ import {
 } from "@/content/mock-data";
 import { TranscriptMessage } from "./transcript-message";
 import { InsightCard } from "./insight-card";
-import { 
-  Play, 
-  Pause, 
-  Sparkles, 
-  Volume2, 
-  ShieldCheck, 
-  Cpu, 
-  ChevronRight,
-  RefreshCw 
-} from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const STEP_DURATION_MS = 6500;
+const STEP_DURATION_MS = 7500;
 
 export function MeetingWindow() {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -92,7 +82,7 @@ export function MeetingWindow() {
     setActiveTranscriptId(null);
   }, []);
 
-  // Keyboard navigation for step tabs (ArrowLeft, ArrowRight, Home, End)
+  // Keyboard navigation for step tabs
   const handleTabKeyDown = (e: React.KeyboardEvent, index: number) => {
     let nextIndex = index;
     if (e.key === "ArrowRight") {
@@ -120,52 +110,41 @@ export function MeetingWindow() {
   };
 
   return (
-    <div className="w-full rounded-2xl border border-border bg-surface shadow-xl overflow-hidden flex flex-col transition-all">
+    <div className="w-full rounded-[4px] border border-[#D8D2C5] bg-[#FDFCF9] shadow-paper overflow-hidden flex flex-col text-left">
       {/* Live Region Announcement for Screen Readers */}
       <div className="sr-only" aria-live="polite" aria-atomic="true">
-        {`Paso ${currentStep.stepNumber} de ${DEMO_STEPS.length}: ${currentStep.title}. ${visibleInsights.length} inferencias activas.`}
+        {`Folio Chapter ${currentStep.stepNumber} of ${DEMO_STEPS.length}: ${currentStep.title}.`}
       </div>
 
-      {/* Window Title Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-border/80 bg-surface-raised">
+      {/* Editorial Folio Header Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-2.5 border-b border-[#D8D2C5] bg-[#F5F2EB] font-mono text-[11px]">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5" aria-hidden="true">
-            <div className="w-3 h-3 rounded-full bg-rose-400/80" />
-            <div className="w-3 h-3 rounded-full bg-amber-400/80" />
-            <div className="w-3 h-3 rounded-full bg-emerald-400/80" />
-          </div>
-
-          <div className="h-4 w-px bg-border mx-1 hidden sm:block" />
-
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-foreground flex items-center gap-1.5">
-              <Volume2 className="w-3.5 h-3.5 text-zinc-500" />
-              <span>ERP Sync & Purchasing Architecture</span>
-            </span>
-            <span className="text-[11px] font-mono text-foreground-muted px-2 py-0.5 rounded bg-zinc-100 border border-zinc-200">
-              {currentStep.timestamp}
-            </span>
-          </div>
+          <span className="font-semibold text-foreground tracking-tight">
+            PROCEEDINGS FOLIO · REF: 2026-Q3-ERP
+          </span>
+          <span className="text-[#D8D2C5] hidden sm:inline">|</span>
+          <span className="text-foreground-muted hidden sm:inline">
+            BUFFER: {currentStep.timestamp} EST
+          </span>
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-            <Cpu className={cn("w-3 h-3 text-emerald-600", !prefersReducedMotion && "animate-pulse")} />
-            <span>QVAC Engine Active</span>
+        {/* Minimal Typographic Status Legend */}
+        <div className="flex items-center gap-3 font-mono text-[10px] text-foreground-muted uppercase tracking-wider">
+          <span className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage shrink-0" />
+            <span>On-Device Substrate (RAM)</span>
           </span>
-          <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-zinc-600 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200">
-            <ShieldCheck className="w-3 h-3 text-zinc-600" />
-            <span>0 bytes cloud</span>
-          </span>
+          <span className="text-[#D8D2C5] hidden sm:inline">|</span>
+          <span className="hidden sm:inline text-foreground-faded">0 Bytes Cloud</span>
         </div>
       </div>
 
-      {/* Interactive Step Switcher & Timeline Controls */}
-      <div className="px-4 sm:px-6 py-3 border-b border-border bg-zinc-50/70 flex flex-wrap items-center justify-between gap-4">
+      {/* Step Tabs / Chapter Navigation */}
+      <div className="px-5 py-2 border-b border-[#D8D2C5] bg-[#FAF8F3] flex flex-wrap items-center justify-between gap-2">
         <div 
           role="tablist" 
-          aria-label="Pasos de la simulación"
-          className="flex items-center gap-1.5 sm:gap-2 flex-wrap"
+          aria-label="Folio chapters"
+          className="flex items-center gap-1.5 flex-wrap font-mono text-xs"
         >
           {DEMO_STEPS.map((step, idx) => {
             const isCurrent = idx === currentStepIndex;
@@ -181,187 +160,142 @@ export function MeetingWindow() {
                 onClick={() => handleStepSelect(idx)}
                 onKeyDown={(e) => handleTabKeyDown(e, idx)}
                 className={cn(
-                  "px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-left flex items-center gap-2 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1",
+                  "px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider transition-colors cursor-pointer border rounded-[2px]",
                   isCurrent
-                    ? "bg-foreground text-background border-foreground shadow-xs font-semibold"
-                    : "bg-surface-raised text-foreground-muted hover:text-foreground border-border hover:bg-white"
+                    ? "bg-foreground text-background border-foreground font-semibold"
+                    : "bg-[#F5F2EB] text-foreground-muted hover:text-foreground border-[#D8D2C5]"
                 )}
               >
                 <span>{step.title}</span>
-                {isCurrent && <ChevronRight className="w-3 h-3 ml-auto opacity-75" aria-hidden="true" />}
               </button>
             );
           })}
         </div>
 
-        <div className="flex items-center gap-2 ml-auto">
+        {/* Clean Interactive Text Controls */}
+        <div className="flex items-center gap-3 font-mono text-[11px] text-foreground-muted ml-auto">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-md border border-border bg-surface-raised hover:bg-zinc-100 text-foreground transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1"
-            aria-label={isPlaying ? "Pausar avance automático de simulación" : "Iniciar avance automático de simulación"}
+            className="hover:text-foreground underline underline-offset-4 decoration-[#D8D2C5] hover:decoration-foreground cursor-pointer transition-colors"
           >
-            {isPlaying ? (
-              <>
-                <Pause className="w-3.5 h-3.5 text-zinc-600" />
-                <span className="hidden sm:inline">Pausar</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-3.5 h-3.5 text-zinc-600" />
-                <span className="hidden sm:inline">Auto-play</span>
-              </>
-            )}
+            {isPlaying ? "Pause Stream" : "Play Stream"}
           </button>
-
+          <span className="text-[#D8D2C5]">·</span>
           <button
             onClick={() => {
               setCurrentStepIndex(0);
               setIsPlaying(true);
               setActiveTranscriptId(null);
             }}
-            className="p-1.5 rounded-md border border-border bg-surface-raised hover:bg-zinc-100 text-foreground-muted hover:text-foreground transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1"
-            title="Reiniciar demostración"
-            aria-label="Reiniciar simulación desde el inicio"
+            className="hover:text-foreground underline underline-offset-4 decoration-[#D8D2C5] hover:decoration-foreground cursor-pointer transition-colors"
           >
-            <RefreshCw className="w-3.5 h-3.5" />
+            Reset
           </button>
         </div>
       </div>
 
-      {/* Autoplay Progress Bar */}
+      {/* Subtle Hairline Progress Rule */}
       {isPlaying && !prefersReducedMotion && (
         <div 
-          className="w-full h-0.5 bg-zinc-200 overflow-hidden" 
+          className="w-full h-[1px] bg-[#E5E0D8] overflow-hidden" 
           role="progressbar" 
           aria-valuenow={Math.round(progress)} 
           aria-valuemin={0} 
           aria-valuemax={100}
-          aria-label="Progreso del paso actual"
+          aria-label="Chapter reading progress"
         >
-          <div 
-            className="h-full bg-foreground/60 transition-all ease-linear"
+          <div
+            className="h-full bg-foreground transition-all duration-75 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>
       )}
 
       {/* Mobile Tab Toggle */}
-      <div 
-        role="tablist" 
-        aria-label="Vistas en dispositivo móvil"
-        className="lg:hidden flex border-b border-border bg-surface"
-      >
+      <div className="md:hidden flex border-b border-[#D8D2C5] bg-[#F5F2EB] font-mono text-[11px]">
         <button
-          role="tab"
-          id="mobile-tab-transcript"
-          aria-selected={mobileTab === "transcript"}
-          aria-controls="mobile-panel-transcript"
           onClick={() => setMobileTab("transcript")}
           className={cn(
-            "flex-1 py-2.5 text-xs font-semibold border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground",
+            "flex-1 py-1.5 border-b-2 text-center transition-colors uppercase tracking-wider",
             mobileTab === "transcript"
-              ? "border-foreground text-foreground bg-surface-raised"
+              ? "border-foreground text-foreground bg-[#FDFCF9] font-semibold"
               : "border-transparent text-foreground-muted hover:text-foreground"
           )}
         >
-          Conversación ({visibleTranscripts.length})
+          Audio Buffer ({visibleTranscripts.length})
         </button>
         <button
-          role="tab"
-          id="mobile-tab-insights"
-          aria-selected={mobileTab === "insights"}
-          aria-controls="mobile-panel-insights"
           onClick={() => setMobileTab("insights")}
           className={cn(
-            "flex-1 py-2.5 text-xs font-semibold border-b-2 transition-colors flex items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground",
+            "flex-1 py-1.5 border-b-2 text-center transition-colors uppercase tracking-wider",
             mobileTab === "insights"
-              ? "border-foreground text-foreground bg-surface-raised"
+              ? "border-foreground text-foreground bg-[#FDFCF9] font-semibold"
               : "border-transparent text-foreground-muted hover:text-foreground"
           )}
         >
-          <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-          <span>Comprensión Dolphin ({visibleInsights.length})</span>
+          Analysis ({visibleInsights.length})
         </button>
       </div>
 
-      {/* Two Column Live Workspace */}
+      {/* Main Two-Column Editorial Folio Grid */}
       <div 
         id={`step-panel-${currentStepIndex}`}
         role="tabpanel"
         aria-labelledby={`step-tab-${currentStepIndex}`}
-        className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px] bg-background"
+        className="grid grid-cols-1 md:grid-cols-12 min-h-[380px] bg-[#FDFCF9]"
       >
-        {/* Left Column: Literal Conversation */}
+        {/* Left Column: Live Spoken Transcript */}
         <div
-          id="mobile-panel-transcript"
-          role="region"
-          aria-label="Panel de Conversación Literal"
           className={cn(
-            "lg:col-span-6 p-4 sm:p-6 border-b lg:border-b-0 lg:border-r border-border/80 flex flex-col justify-between space-y-4",
-            mobileTab === "insights" ? "hidden lg:flex" : "flex"
+            "md:col-span-6 p-5 border-r border-[#D8D2C5] flex flex-col justify-between space-y-4 bg-[#FBF9F5]",
+            mobileTab === "insights" ? "hidden md:flex" : "flex"
           )}
         >
           <div className="space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-border/60">
-              <span className="text-xs font-bold uppercase tracking-wider text-foreground-muted font-mono">
-                Conversación en Vivo
-              </span>
-              <span className="text-[11px] text-zinc-600 font-mono">
-                {visibleTranscripts.length} fragmentos detectados
-              </span>
+            <div className="flex items-center justify-between font-mono text-[10px] text-foreground-faded uppercase tracking-wider pb-1.5 border-b border-[#EBE6DC]">
+              <span>Audio Record Buffer</span>
+              <span>Click line to cite</span>
             </div>
 
-            <div className="space-y-2.5">
+            <div className="space-y-3">
               {visibleTranscripts.map((entry) => (
                 <TranscriptMessage
                   key={entry.id}
                   entry={entry}
-                  isHighlighted={
-                    activeTranscriptId === entry.id ||
-                    entry.highlightedInSteps?.includes(currentStep.stepNumber)
-                  }
+                  isHighlighted={activeTranscriptId === entry.id}
                   onSelect={() => toggleTranscriptHighlight(entry.id)}
                 />
               ))}
             </div>
           </div>
 
-          <div className="pt-3 border-t border-border/60 text-[11px] text-foreground-muted flex items-center justify-between">
-            <span>Audio stream local · Micrófono activo</span>
-            <span className="font-mono text-zinc-500">Latencia: ~14ms</span>
+          <div className="pt-3 border-t border-[#EBE6DC] flex items-center justify-between font-mono text-[10px] text-foreground-muted uppercase tracking-wider">
+            <span>Model Ingestion: Active</span>
+            <span className="text-foreground-faded">~12ms Local QVAC</span>
           </div>
         </div>
 
-        {/* Right Column: Dolphin Live Understanding */}
+        {/* Right Column: Dolphin Structured Reasoning & Marginalia */}
         <div
-          id="mobile-panel-insights"
-          role="region"
-          aria-label="Panel de Comprensión Dolphin"
           className={cn(
-            "lg:col-span-6 p-4 sm:p-6 bg-surface/40 flex flex-col justify-between space-y-4",
-            mobileTab === "transcript" ? "hidden lg:flex" : "flex"
+            "md:col-span-6 p-5 flex flex-col justify-between space-y-4 bg-[#FDFCF9]",
+            mobileTab === "transcript" ? "hidden md:flex" : "flex"
           )}
         >
           <div className="space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-border/60">
-              <div className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-foreground" />
-                <span className="text-xs font-bold uppercase tracking-wider text-foreground font-mono">
-                  Comprensión Estructurada
-                </span>
-              </div>
-              <span className="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-mono">
-                {visibleInsights.length} inferencias activas
-              </span>
+            <div className="flex items-center justify-between font-mono text-[10px] text-foreground-faded uppercase tracking-wider pb-1.5 border-b border-[#EBE6DC]">
+              <span>Cognitive Structuring & Marginalia</span>
+              <span>{visibleInsights.length} Inferred Notes</span>
             </div>
 
-            <div className="space-y-3 overflow-y-auto max-h-[380px] pr-1">
+            <div className="space-y-3">
               {visibleInsights.map((insight) => (
                 <InsightCard
                   key={insight.id}
                   insight={insight}
                   isActive={
-                    activeTranscriptId === insight.relatedTranscriptId
+                    activeTranscriptId !== null &&
+                    insight.relatedTranscriptId === activeTranscriptId
                   }
                   onSelect={() => {
                     if (insight.relatedTranscriptId) {
@@ -373,11 +307,9 @@ export function MeetingWindow() {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-border/60 text-[11px] text-foreground-muted flex items-center justify-between">
-            <span>Modelo mental actualizado en tiempo real</span>
-            <span className="font-mono text-emerald-700 font-semibold">
-              On-Device Inference
-            </span>
+          {/* Editorial Footnote Callout */}
+          <div className="pt-3 border-t border-[#EBE6DC] text-xs text-foreground-muted font-serif italic">
+            Dolphin monitors the stream continuously, structuring technical entities and exceptions as notes in the margin.
           </div>
         </div>
       </div>

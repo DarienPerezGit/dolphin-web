@@ -1,14 +1,6 @@
 import React from "react";
 import { InsightItem } from "@/types/landing";
 import { cn } from "@/lib/utils";
-import { 
-  GitBranch, 
-  CheckCircle2, 
-  AlertTriangle, 
-  HelpCircle, 
-  BookOpen,
-  ArrowRight
-} from "lucide-react";
 
 interface InsightCardProps {
   insight: InsightItem;
@@ -21,40 +13,39 @@ export function InsightCard({
   isActive = false,
   onSelect,
 }: InsightCardProps) {
-  const typeConfig = {
+  const typeMeta: Record<string, { prefix: string; label: string; accentColor: string }> = {
     process: {
-      icon: <GitBranch className="w-4 h-4 text-blue-600" />,
-      tag: "PROCESO DETECTADO",
-      badgeClass: "bg-blue-50 text-blue-700 border-blue-200",
-      accentBorder: "border-l-blue-500",
+      prefix: "FIG. 1.1",
+      label: "Process Schematic",
+      accentColor: "border-l-foreground",
     },
     requirement: {
-      icon: <CheckCircle2 className="w-4 h-4 text-emerald-600" />,
-      tag: "REQUERIMIENTO",
-      badgeClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
-      accentBorder: "border-l-emerald-500",
+      prefix: "§ 01.A",
+      label: "Requirement Spec",
+      accentColor: "border-l-editorial-sage",
     },
     explanation: {
-      icon: <BookOpen className="w-4 h-4 text-purple-600" />,
-      tag: "EXPLICACIÓN CONTEXTUAL",
-      badgeClass: "bg-purple-50 text-purple-700 border-purple-200",
-      accentBorder: "border-l-purple-500",
+      prefix: "DEF. 02",
+      label: "Context Lexicon",
+      accentColor: "border-l-editorial-lavender",
     },
     contradiction: {
-      icon: <AlertTriangle className="w-4 h-4 text-amber-600" />,
-      tag: "POSIBLE CONTRADICCIÓN",
-      badgeClass: "bg-amber-50 text-amber-800 border-amber-200",
-      accentBorder: "border-l-amber-500",
+      prefix: "CRIT. 03",
+      label: "Logic Discrepancy",
+      accentColor: "border-l-editorial-terracotta",
     },
     question: {
-      icon: <HelpCircle className="w-4 h-4 text-indigo-600" />,
-      tag: "PREGUNTA SUGERIDA",
-      badgeClass: "bg-indigo-50 text-indigo-700 border-indigo-200",
-      accentBorder: "border-l-indigo-500",
+      prefix: "QRY. 04",
+      label: "Suggested Query",
+      accentColor: "border-l-editorial-ochre",
     },
   };
 
-  const config = typeConfig[insight.type];
+  const meta = typeMeta[insight.type] || {
+    prefix: "NOTE",
+    label: insight.type.toUpperCase(),
+    accentColor: "border-l-border-strong",
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -70,50 +61,45 @@ export function InsightCard({
       onClick={onSelect}
       onKeyDown={handleKeyDown}
       aria-pressed={isActive}
-      aria-label={`${config.tag}: ${insight.title}. ${insight.summary}`}
+      aria-label={`${meta.label}: ${insight.title}`}
       className={cn(
-        "p-4 rounded-xl border border-l-4 bg-surface-raised shadow-xs transition-all cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1",
-        config.accentBorder,
+        "group relative pl-3.5 pr-2 py-3 border-l-2 transition-all cursor-pointer text-left border-b border-border-subtle/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground",
+        meta.accentColor,
         isActive
-          ? "ring-1 ring-foreground/30 shadow-md border-foreground/30"
-          : "hover:border-border hover:shadow-sm"
+          ? "bg-surface/80 -ml-1 pl-4.5"
+          : "hover:bg-surface/40"
       )}
     >
-      <div className="flex items-center justify-between gap-2 mb-2">
-        <div className="flex items-center gap-2">
-          <span className="p-1 rounded-md bg-zinc-50 border border-border">
-            {config.icon}
-          </span>
-          <span
-            className={cn(
-              "text-[10px] font-bold tracking-wider uppercase font-mono px-2 py-0.5 rounded border",
-              config.badgeClass
-            )}
-          >
-            {config.tag}
+      {/* Top Folio Label */}
+      <div className="flex items-baseline justify-between gap-2 mb-1 font-mono text-[10px]">
+        <div className="flex items-center gap-1.5">
+          <span className="font-semibold text-foreground-faded">{meta.prefix}</span>
+          <span className="text-border-strong">/</span>
+          <span className="text-foreground-muted uppercase tracking-widest text-[9px]">
+            {meta.label}
           </span>
         </div>
       </div>
 
-      <h4 className="text-xs sm:text-sm font-semibold text-foreground mb-1">
+      <h4 className="font-serif text-[13px] sm:text-sm font-semibold text-foreground tracking-tight mb-1">
         {insight.title}
       </h4>
 
-      <p className="text-xs text-foreground/80 leading-relaxed mb-2.5">
+      <p className="text-xs text-foreground-muted leading-relaxed mb-2 font-sans">
         {insight.summary}
       </p>
 
-      {/* Sequential Process Flow Rendering */}
+      {/* Process Flow rendered as clean typographic diagram */}
       {insight.processFlow && insight.processFlow.length > 0 && (
-        <div className="mt-2 pt-2 border-t border-border/60">
-          <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
+        <div className="mt-2 pt-2 border-t border-border-subtle/80 font-mono text-[10px]">
+          <div className="flex flex-wrap items-center gap-1 text-foreground">
             {insight.processFlow.map((step, idx) => (
               <React.Fragment key={idx}>
-                <span className="px-2 py-0.5 bg-zinc-100 text-zinc-800 rounded border border-zinc-200">
-                  {step}
+                <span className="text-foreground font-mono bg-paper px-1.5 py-0.5 rounded-[2px] border border-border">
+                  {String(idx + 1).padStart(2, "0")}. {step}
                 </span>
                 {idx < insight.processFlow!.length - 1 && (
-                  <ArrowRight className="w-3 h-3 text-zinc-400" />
+                  <span className="text-foreground-faded px-0.5 select-none">→</span>
                 )}
               </React.Fragment>
             ))}
@@ -121,15 +107,18 @@ export function InsightCard({
         </div>
       )}
 
-      {/* Bullet points details */}
+      {/* Bullet Points Details rendered as classical numbered/dash list */}
       {insight.details && insight.details.length > 0 && (
-        <ul className="mt-2 pt-2 border-t border-border/60 space-y-1 text-xs text-foreground-muted list-disc list-inside">
+        <div className="mt-2 pt-1.5 border-t border-border-subtle/80 space-y-1 font-sans text-xs text-foreground-muted">
           {insight.details.map((detail, idx) => (
-            <li key={idx} className="leading-normal">
-              <span className="text-foreground/90">{detail}</span>
-            </li>
+            <div key={idx} className="flex items-start gap-2">
+              <span className="font-mono text-[10px] text-foreground-faded select-none">
+                [{idx + 1}]
+              </span>
+              <span className="leading-snug">{detail}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

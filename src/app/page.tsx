@@ -1,25 +1,26 @@
 import { Hero } from "@/components/sections/hero";
-import { Problem } from "@/components/sections/problem";
-import { Capabilities } from "@/components/sections/capabilities";
-import { HowItWorks } from "@/components/sections/how-it-works";
-import { TranslationDemo } from "@/components/sections/translation-demo";
-import { ContradictionDemo } from "@/components/sections/contradiction-demo";
+import { HeroCarousel } from "@/components/sections/hero-carousel";
+import { EditorialInfographies } from "@/components/sections/editorial-infographies";
+import { DemoSection } from "@/components/sections/demo-section";
 import { Privacy } from "@/components/sections/privacy";
-import { QvacSection } from "@/components/sections/qvac";
-import { UseCases } from "@/components/sections/use-cases";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full bg-[#FBF9F5]">
+      {/* 1. Encabezado / Hero */}
       <Hero />
-      <Problem />
-      <Capabilities />
-      <HowItWorks />
-      <TranslationDemo />
-      <ContradictionDemo />
+
+      {/* 2. Carrusel Continuo de Gran Formato (Alto impacto visual inmediato) */}
+      <HeroCarousel />
+
+      {/* 3. Infografías Editoriales Centrales (Casi toda la pantalla, legibles a simple vista) */}
+      <EditorialInfographies />
+
+      {/* 4. Simulación Interactiva en Vivo */}
+      <DemoSection />
+
+      {/* 5. Constitución de Privacidad & Soberanía Local */}
       <Privacy />
-      <QvacSection />
-      <UseCases />
     </div>
   );
 }

@@ -1,61 +1,39 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Section } from "../layout/section";
 import { Badge } from "../ui/badge";
 import { CANONICAL_CAPABILITIES } from "@/content/mock-data";
-import { 
-  BrainCircuit, 
-  ArrowLeftRight, 
-  GitMerge, 
-  ShieldAlert, 
-  Layers, 
-  HelpCircle 
-} from "lucide-react";
 
 export function Capabilities() {
-  const iconMap: Record<string, React.ReactNode> = {
-    BrainCircuit: <BrainCircuit className="w-5 h-5 text-blue-600" />,
-    ArrowLeftRight: <ArrowLeftRight className="w-5 h-5 text-purple-600" />,
-    GitMerge: <GitMerge className="w-5 h-5 text-emerald-600" />,
-    ShieldAlert: <ShieldAlert className="w-5 h-5 text-amber-600" />,
-    Layers: <Layers className="w-5 h-5 text-indigo-600" />,
-    HelpCircle: <HelpCircle className="w-5 h-5 text-rose-600" />,
-  };
-
   return (
-    <Section id="capabilities">
+    <section id="capabilities" className="py-16 md:py-24 bg-background border-b border-border">
       <Container className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="neutral">Capacidades</Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Seis pilares de comprensión en tiempo real
+          <Badge variant="neutral">§ 03.0 / CORE INSTRUMENTS</Badge>
+          <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+            Six instruments of real-time comprehension
           </h2>
-          <p className="text-base text-foreground-muted">
-            Diseñado para seguir conversaciones complejas donde el lenguaje técnico y el de negocio colisionan.
+          <p className="font-sans text-sm sm:text-base text-foreground-muted">
+            Engineered for meetings where technical architecture, business constraints, and product requirements collide.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {CANONICAL_CAPABILITIES.map((cap) => (
+          {CANONICAL_CAPABILITIES.map((cap, index) => (
             <div
               key={cap.id}
-              className="p-6 rounded-2xl border border-border bg-surface-raised hover:border-foreground/30 hover:shadow-sm transition-all flex flex-col justify-between space-y-4"
+              className="p-6 rounded-[4px] border border-border bg-paper-light hover:border-border-strong hover:shadow-card transition-all flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
-                <div className="p-2.5 rounded-xl bg-zinc-100/80 w-fit border border-border">
-                  {iconMap[cap.iconName]}
+                <div className="flex items-center justify-between font-mono text-[10px] text-foreground-faded pb-2 border-b border-border-subtle">
+                  <span>NO. 0{index + 1}</span>
+                  <span className="uppercase tracking-widest">{cap.shortDescription}</span>
                 </div>
 
-                <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-foreground">
-                    {cap.title}
-                  </h3>
-                  <p className="text-xs font-mono text-zinc-500">
-                    {cap.shortDescription}
-                  </p>
-                </div>
+                <h3 className="font-serif text-lg font-medium text-foreground tracking-tight">
+                  {cap.title}
+                </h3>
 
-                <p className="text-sm text-foreground/80 leading-relaxed">
+                <p className="font-sans text-xs sm:text-sm text-foreground-muted leading-relaxed">
                   {cap.detailedDescription}
                 </p>
               </div>
@@ -63,6 +41,6 @@ export function Capabilities() {
           ))}
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

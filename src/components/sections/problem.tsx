@@ -1,90 +1,82 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Section } from "../layout/section";
 import { Badge } from "../ui/badge";
-import { MessageSquareX, Sparkles, ArrowRight } from "lucide-react";
 
 export function Problem() {
   return (
-    <Section id="problem" hasBackground>
-      <Container className="space-y-12">
+    <section id="problem" className="py-16 md:py-24 bg-paper border-b border-border">
+      <Container className="space-y-12 max-w-5xl">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="neutral">El Problema</Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            La brecha entre lo que se dijo y lo que significa
+          <Badge variant="neutral">§ 02.0 / THE EDITORIAL GAP</Badge>
+          <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+            The disparity between verbatim audio and cognitive meaning
           </h2>
-          <p className="text-base text-foreground-muted">
-            Los asistentes de reuniones tradicionales transcriben palabras. Dolphin construye un modelo mental estructurado en tiempo real.
+          <p className="font-sans text-sm sm:text-base text-foreground-muted leading-relaxed">
+            Conventional assistants ask, <em>“What words were spoken?”</em> Dolphin builds an active, structured mental model to ask, <em>“What does this mean for our system?”</em>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Asistentes tradicionales */}
-          <div className="p-6 sm:p-8 rounded-2xl border border-border bg-surface-raised space-y-4">
-            <div className="p-2.5 rounded-xl bg-zinc-100 w-fit text-zinc-600">
-              <MessageSquareX className="w-5 h-5" />
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="text-lg font-bold text-foreground">
-                Asistentes de notas tradicionales
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+          {/* Traditional transcription column */}
+          <div className="p-6 sm:p-8 rounded-[4px] border border-border bg-paper-light space-y-5">
+            <div className="space-y-1 pb-4 border-b border-border-subtle">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-foreground-faded">
+                EXHIBIT A — CONVENTIONAL RECORDERS
+              </span>
+              <h3 className="font-serif text-xl text-foreground font-medium">
+                Passive Transcripts & Delayed Summaries
               </h3>
-              <p className="text-xs font-mono text-zinc-500 uppercase">
-                ¿Qué palabras exactas se dijeron?
-              </p>
             </div>
 
-            <ul className="space-y-2.5 text-sm text-foreground-muted">
-              <li className="flex items-start gap-2">
-                <span className="text-rose-500 font-bold">✕</span>
-                <span>Muros de texto planos y transcripciones kilométricas sin estructurar.</span>
+            <ul className="space-y-3 font-sans text-xs text-foreground-muted leading-relaxed">
+              <li className="flex items-start gap-2.5">
+                <span className="font-mono text-editorial-terracotta text-[11px]">—</span>
+                <span>Produces dense, unstructured walls of verbatim text that require extensive manual reading afterward.</span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-rose-500 font-bold">✕</span>
-                <span>Resúmenes genéricos que se leen horas después de terminada la reunión.</span>
+              <li className="flex items-start gap-2.5">
+                <span className="font-mono text-editorial-terracotta text-[11px]">—</span>
+                <span>Generates broad summaries hours after the meeting concludes, when questions can no longer be asked directly.</span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-rose-500 font-bold">✕</span>
-                <span>Audio enviado a servidores cloud de terceros sin control de privacidad.</span>
+              <li className="flex items-start gap-2.5">
+                <span className="font-mono text-editorial-terracotta text-[11px]">—</span>
+                <span>Routes sensitive audio streams to third-party cloud infrastructure without verifiable local boundaries.</span>
               </li>
             </ul>
           </div>
 
-          {/* Enfoque Dolphin */}
-          <div className="p-6 sm:p-8 rounded-2xl border-2 border-foreground/80 bg-surface-raised space-y-4 shadow-sm">
-            <div className="p-2.5 rounded-xl bg-foreground text-background w-fit">
-              <Sparkles className="w-5 h-5" />
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="text-lg font-bold text-foreground flex items-center justify-between">
-                <span>Dolphin Intelligence</span>
-                <span className="text-xs font-normal text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  En tiempo real
+          {/* Dolphin cognitive approach */}
+          <div className="p-6 sm:p-8 rounded-[4px] border border-foreground bg-surface space-y-5 shadow-paper">
+            <div className="space-y-1 pb-4 border-b border-border">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-editorial-sage font-semibold">
+                  EXHIBIT B — DOLPHIN COGNITIVE LAYER
                 </span>
+                <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.2 rounded-[2px] bg-editorial-sage-bg text-editorial-sage border border-[#D1E0D6]">
+                  Real-time
+                </span>
+              </div>
+              <h3 className="font-serif text-xl text-foreground font-medium">
+                Active Reasoning & Real-Time Marginalia
               </h3>
-              <p className="text-xs font-mono text-zinc-700 uppercase">
-                ¿Qué significa y qué debemos aclarar ya?
-              </p>
             </div>
 
-            <ul className="space-y-2.5 text-sm text-foreground/90">
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 font-bold">✓</span>
-                <span>Extracción inmediata de flujos de procesos, requerimientos y dependencias.</span>
+            <ul className="space-y-3 font-sans text-xs text-foreground leading-relaxed">
+              <li className="flex items-start gap-2.5">
+                <span className="font-mono text-editorial-sage text-[11px] font-bold">✓</span>
+                <span>Extracts sequential process workflows, system dependencies, and technical definitions concurrently as words are spoken.</span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 font-bold">✓</span>
-                <span>Detección de contradicciones y preguntas sugeridas durante la llamada.</span>
+              <li className="flex items-start gap-2.5">
+                <span className="font-mono text-editorial-sage text-[11px] font-bold">✓</span>
+                <span>Surfaces logical contradictions and suggests clarifying queries while all stakeholders remain in the room.</span>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 font-bold">✓</span>
-                <span>100% on-device: inferencia local con cero fuga de audio a la nube.</span>
+              <li className="flex items-start gap-2.5">
+                <span className="font-mono text-editorial-sage text-[11px] font-bold">✓</span>
+                <span>100% on-device execution: zero voice bytes leave local RAM, preserving complete operational confidentiality.</span>
               </li>
             </ul>
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

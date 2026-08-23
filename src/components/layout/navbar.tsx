@@ -2,39 +2,41 @@
 
 import React, { useState } from "react";
 import { Container } from "./container";
-import { Button } from "../ui/button";
 import { DolphinLogo } from "../ui/logo";
 import { PRODUCT_INFO } from "@/content/mock-data";
-import { Menu, X, Github, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Product", href: "#demo" },
-    { label: "Capabilities", href: "#capabilities" },
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Privacy", href: "#privacy" },
-    { label: "Use cases", href: "#use-cases" },
+    { label: "Folio", href: "#demo" },
+    { label: "Problem", href: "#problem" },
+    { label: "Instruments", href: "#capabilities" },
+    { label: "Method", href: "#how-it-works" },
+    { label: "Constitution", href: "#privacy" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-background/85 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between">
-        <div className="flex items-center gap-8">
-          <a href="#" className="flex items-center gap-2 group rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2">
-            <DolphinLogo size={28} />
-            <span className="text-[10px] uppercase font-semibold px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded-full border border-zinc-200 font-mono">
-              v1 Preview
-            </span>
+    <header className="sticky top-0 z-50 w-full border-b border-[#D8D2C5] bg-[#F5F2EB]">
+      <Container className="flex h-13 items-center justify-between py-2">
+        {/* Left: Serif Brand Imprint */}
+        <div className="flex items-center gap-6">
+          <a
+            href="#"
+            className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
+            aria-label="Dolphin Home"
+          >
+            <DolphinLogo size={20} />
           </a>
 
-          <nav className="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+          {/* Editorial Navigation */}
+          <nav className="hidden lg:flex items-center gap-5 border-l border-[#D8D2C5] pl-5" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground-muted hover:text-foreground transition-colors rounded-md py-1 px-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1"
+                className="text-[11px] font-mono tracking-wider text-foreground-muted hover:text-foreground transition-colors uppercase"
               >
                 {link.label}
               </a>
@@ -42,76 +44,71 @@ export function Navbar() {
           </nav>
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        {/* Center: Masthead Session Status in Small-Caps */}
+        <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
+          <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage shrink-0" />
+          <span>Local Substrate · QVAC Engine Operational</span>
+        </div>
+
+        {/* Right: Indispensable Controls Only */}
+        <div className="hidden sm:flex items-center gap-4 font-mono text-xs">
           <a
             href={PRODUCT_INFO.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground-muted hover:text-foreground px-3 py-2 rounded-md hover:bg-accent-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1"
-            aria-label="View on GitHub"
+            className="inline-flex items-center gap-1 text-[11px] text-foreground-muted hover:text-foreground transition-colors underline underline-offset-4 decoration-[#D8D2C5] hover:decoration-foreground"
           >
-            <Github className="w-4 h-4" />
-            <span>GitHub</span>
+            <span>Repository</span>
+            <ArrowUpRight className="w-3 h-3 opacity-60" />
           </a>
-          
-          <Button
-            size="sm"
-            onClick={() => {
-              document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="gap-1.5"
+
+          <a
+            href="#demo"
+            className="inline-flex items-center justify-center px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-foreground bg-[#FBF9F5] border border-[#D8D2C5] rounded-[3px] hover:border-foreground transition-colors"
           >
-            <span>Watch demo</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Button>
+            Examine Folio
+          </a>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile menu toggle */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-foreground-muted hover:text-foreground rounded-lg hover:bg-accent-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
+          className="lg:hidden p-1.5 text-foreground-muted hover:text-foreground rounded-[3px] border border-[#D8D2C5]"
           aria-expanded={mobileMenuOpen}
           aria-label="Toggle navigation menu"
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
       </Container>
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-border bg-background px-4 py-6 space-y-4">
-          <nav className="flex flex-col space-y-3">
+        <div className="lg:hidden border-t border-[#D8D2C5] bg-[#F5F2EB] px-4 py-3 space-y-2.5">
+          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-foreground-muted pb-2 border-b border-[#E3DEC3]">
+            <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage" />
+            <span>Local Substrate · Active</span>
+          </div>
+          <nav className="flex flex-col space-y-1.5 pt-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-foreground py-1 px-2 rounded-md hover:bg-accent-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
+                className="text-xs font-mono uppercase tracking-wider text-foreground-muted hover:text-foreground py-1"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-
-          <div className="pt-4 border-t border-border flex flex-col gap-2">
-            <Button
-              className="w-full justify-center"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Watch demo
-            </Button>
+          <div className="pt-2 border-t border-[#E3DEC3] flex items-center justify-between text-xs font-mono">
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium text-foreground-muted hover:text-foreground py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
+              className="text-foreground-muted hover:text-foreground underline underline-offset-4"
             >
-              <Github className="w-4 h-4" />
-              <span>View repository on GitHub</span>
+              GitHub Source ↗
             </a>
           </div>
         </div>

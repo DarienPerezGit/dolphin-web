@@ -1,92 +1,80 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Section } from "../layout/section";
 import { Badge } from "../ui/badge";
-import { Mic, Brain, Network, GitBranch, MessageSquarePlus, ArrowRight } from "lucide-react";
 
 export function HowItWorks() {
   const steps = [
     {
       num: "01",
       title: "Listen",
-      desc: "Captura el flujo de audio localmente con baja latencia sin transmitir datos fuera del equipo.",
-      icon: <Mic className="w-5 h-5 text-blue-600" />,
+      subtitle: "Audio Ingestion",
+      desc: "Captures the local microphone stream in RAM with low latency. Zero packets leave the local interface.",
     },
     {
       num: "02",
       title: "Understand",
-      desc: "Infiere intenciones, entidades y procesos detrás de las oraciones en lugar de solo palabras.",
-      icon: <Brain className="w-5 h-5 text-purple-600" />,
+      subtitle: "Semantic Parsing",
+      desc: "Dissects technical entities, actors, and implicit intentions rather than treating audio as literal tokens.",
     },
     {
       num: "03",
       title: "Structure",
-      desc: "Convierte diálogo desordenado en flujos secuenciales, requerimientos y dependencias claras.",
-      icon: <Network className="w-5 h-5 text-emerald-600" />,
+      subtitle: "Schema Mapping",
+      desc: "Organizes unstructured spoken dialogue into verifiable step diagrams, data entities, and system prerequisites.",
     },
     {
       num: "04",
       title: "Connect",
-      desc: "Relaciona acuerdos nuevos con premisas y reglas mencionadas al inicio de la conversación.",
-      icon: <GitBranch className="w-5 h-5 text-amber-600" />,
+      subtitle: "Knowledge Graph",
+      desc: "Cross-references new assertions against statements made earlier in the transcript buffer.",
     },
     {
       num: "05",
       title: "Intervene",
-      desc: "Sugiere preguntas oportunas y alertas de contradicción antes de que termine la llamada.",
-      icon: <MessageSquarePlus className="w-5 h-5 text-rose-600" />,
+      subtitle: "Quiet Marginalia",
+      desc: "Surfaces concise queries and identifies logic conflicts before participants adjourn.",
     },
   ];
 
   return (
-    <Section id="how-it-works" hasBackground>
+    <section id="how-it-works" className="py-16 md:py-24 bg-paper border-b border-border">
       <Container className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="neutral">Arquitectura Cognitiva</Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            El ciclo de inteligencia en vivo
+          <Badge variant="neutral">§ 04.0 / THE COGNITIVE CYCLE</Badge>
+          <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+            The five-stage on-device reasoning loop
           </h2>
-          <p className="text-base text-foreground-muted">
-            Cómo Dolphin procesa la conversación en una cadena de inferencias continuas en tu dispositivo.
+          <p className="font-sans text-sm sm:text-base text-foreground-muted">
+            Continuous local inference: from raw microphone vibration to active semantic structure.
           </p>
         </div>
 
-        {/* Steps Grid */}
+        {/* Steps Grid as Editorial Sequential Plates */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {steps.map((step, idx) => (
+          {steps.map((step) => (
             <div
               key={step.num}
-              className="p-5 rounded-2xl border border-border bg-surface-raised space-y-3 flex flex-col justify-between"
+              className="p-5 rounded-[4px] border border-border bg-paper-light space-y-3 flex flex-col justify-between"
             >
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="p-2 rounded-lg bg-zinc-100 border border-border">
-                    {step.icon}
-                  </span>
-                  <span className="text-xs font-mono font-bold text-zinc-400">
-                    {step.num}
-                  </span>
+                <div className="flex items-center justify-between pb-2 border-b border-border-subtle font-mono text-[10px]">
+                  <span className="text-foreground-faded font-semibold">STAGE {step.num}</span>
+                  <span className="uppercase tracking-wider text-foreground-muted">{step.subtitle}</span>
                 </div>
 
                 <div>
-                  <h3 className="text-base font-bold text-foreground">
+                  <h3 className="font-serif text-lg font-medium text-foreground">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-foreground-muted leading-relaxed mt-1">
+                  <p className="font-sans text-xs text-foreground-muted leading-relaxed mt-1.5">
                     {step.desc}
                   </p>
                 </div>
               </div>
-
-              {idx < steps.length - 1 && (
-                <div className="hidden lg:flex justify-end pt-2 text-zinc-300">
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              )}
             </div>
           ))}
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

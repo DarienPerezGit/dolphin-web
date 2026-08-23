@@ -1,7 +1,6 @@
 import React from "react";
 import { TranscriptEntry } from "@/types/landing";
 import { cn } from "@/lib/utils";
-import { User, Code2, Briefcase, Calculator } from "lucide-react";
 
 interface TranscriptMessageProps {
   entry: TranscriptEntry;
@@ -14,18 +13,11 @@ export function TranscriptMessage({
   isHighlighted = false,
   onSelect,
 }: TranscriptMessageProps) {
-  const roleIcons = {
-    Client: <User className="w-3.5 h-3.5 text-blue-600" />,
-    Engineer: <Code2 className="w-3.5 h-3.5 text-purple-600" />,
-    Manager: <Briefcase className="w-3.5 h-3.5 text-amber-600" />,
-    Accounting: <Calculator className="w-3.5 h-3.5 text-emerald-600" />,
-  };
-
-  const roleBadge = {
-    Client: "bg-blue-50 text-blue-700 border-blue-200",
-    Engineer: "bg-purple-50 text-purple-700 border-purple-200",
-    Manager: "bg-amber-50 text-amber-700 border-amber-200",
-    Accounting: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  const roleBorder: Record<string, string> = {
+    Client: "border-l-[#D8D2C5]",
+    Engineer: "border-l-[#3D6047]",
+    Manager: "border-l-[#9E782F]",
+    Accounting: "border-l-[#B94732]",
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -42,40 +34,35 @@ export function TranscriptMessage({
       onClick={onSelect}
       onKeyDown={handleKeyDown}
       aria-pressed={isHighlighted}
-      aria-label={`Mensaje de ${entry.speaker} (${entry.role}) a las ${entry.timestamp}: "${entry.text}"`}
+      aria-label={`Record at ${entry.timestamp} by ${entry.speaker} (${entry.role}): "${entry.text}"`}
       className={cn(
-        "p-3.5 rounded-xl border transition-all cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-1",
+        "group relative pl-3.5 pr-2 py-2.5 border-l-2 transition-all cursor-pointer text-left border-b border-border-subtle/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground",
+        roleBorder[entry.role] || "border-l-border",
         isHighlighted
-          ? "bg-surface-raised border-foreground/40 shadow-sm ring-1 ring-foreground/20"
-          : "bg-surface/60 border-border/80 hover:bg-surface-raised hover:border-border"
+          ? "bg-surface/80 border-l-foreground -ml-1 pl-4.5"
+          : "hover:bg-surface/40"
       )}
     >
-      <div className="flex items-center justify-between gap-2 mb-1.5">
+      {/* Marginalia Header */}
+      <div className="flex items-baseline justify-between gap-2 mb-1 font-mono text-[10px]">
         <div className="flex items-center gap-2">
-          <span className="p-1 rounded-md bg-white border border-border shadow-2xs">
-            {roleIcons[entry.role]}
-          </span>
-          <span className="text-xs font-semibold text-foreground">
+          <span className="font-semibold text-foreground tracking-tight">
             {entry.speaker}
           </span>
-          <span
-            className={cn(
-              "text-[10px] uppercase tracking-wider font-mono px-1.5 py-0.2 rounded border",
-              roleBadge[entry.role]
-            )}
-          >
-            {entry.role}
+          <span className="text-foreground-faded text-[9px] uppercase tracking-widest">
+            /{entry.role}
           </span>
         </div>
 
-        <span className="text-[11px] font-mono text-foreground-muted">
+        <span className="text-foreground-faded font-mono text-[9px]">
           {entry.timestamp}
         </span>
       </div>
 
-      <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed pl-7">
+      {/* Spoken Quote in Serif */}
+      <blockquote className="text-xs sm:text-[13px] text-foreground font-serif leading-relaxed italic">
         &ldquo;{entry.text}&rdquo;
-      </p>
+      </blockquote>
     </div>
   );
 }

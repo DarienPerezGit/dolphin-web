@@ -1,66 +1,67 @@
 import React from "react";
 import { Container } from "./container";
-import { PRODUCT_INFO } from "@/content/mock-data";
 import { DolphinLogo } from "../ui/logo";
-import { Github, Shield, Cpu, ExternalLink } from "lucide-react";
+import { PRODUCT_INFO } from "@/content/mock-data";
+import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface py-12 text-sm text-foreground-muted">
-      <Container className="space-y-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div className="space-y-1">
+    <footer className="border-t border-border bg-paper py-14 text-xs font-sans text-foreground-muted">
+      <Container className="space-y-10 max-w-5xl">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8 border-b border-border-subtle">
+          <div className="space-y-2 max-w-md">
             <div className="flex items-center gap-2">
-              <DolphinLogo size={24} />
-              <span className="text-xs bg-zinc-200/70 text-zinc-700 px-2 py-0.5 rounded font-mono">
-                Local-first
-              </span>
+              <DolphinLogo size={20} />
             </div>
-            <p className="text-xs max-w-md">
-              {PRODUCT_INFO.tagline}
+            <p className="text-xs text-foreground-muted leading-relaxed font-serif">
+              {PRODUCT_INFO.tagline} A local-first cognitive substrate for complex proceedings.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-6 text-xs font-medium">
-            <a href="#demo" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
-              Product Demo
+          <div className="flex flex-wrap items-center gap-6 font-mono text-[11px]">
+            <a
+              href="#demo"
+              className="text-foreground-muted hover:text-foreground transition-colors"
+            >
+              01. Live Folio
             </a>
-            <a href="#capabilities" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
-              Capabilities
+            <a
+              href="#capabilities"
+              className="text-foreground-muted hover:text-foreground transition-colors"
+            >
+              02. Instruments
             </a>
-            <a href="#privacy" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
-              Privacy & Local AI
-            </a>
-            <a href="#how-it-works" className="hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground">
-              Architecture
+            <a
+              href="#privacy"
+              className="text-foreground-muted hover:text-foreground transition-colors"
+            >
+              03. Constitution
             </a>
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 hover:text-foreground transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
+              className="inline-flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors"
             >
-              <span>GitHub</span>
-              <ExternalLink className="w-3 h-3" />
+              <span>Repository</span>
+              <ArrowUpRight className="w-3 h-3 opacity-60" />
             </a>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-border/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+        {/* Colophon & Substrate Metadata */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-[10px] text-foreground-faded uppercase tracking-wider">
           <div className="flex items-center gap-4">
-            <span className="inline-flex items-center gap-1.5 text-zinc-600">
-              <Cpu className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Designed to run locally with QVAC by Tether</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-zinc-600">
-              <Shield className="w-3.5 h-3.5 text-blue-600" />
-              <span>100% On-Device Privacy</span>
-            </span>
+            <span>COLOPHON: EDITION 2026</span>
+            <span>·</span>
+            <span>SUBSTRATE: QVAC ON-DEVICE</span>
+            <span>·</span>
+            <span>ZERO CLOUD TELEMETRY</span>
           </div>
 
-          <p className="text-zinc-500">
-            © {new Date().getFullYear()} Dolphin Project. Hackathon visual & marketing prototype.
-          </p>
+          <div>
+            OPEN-SOURCE RESEARCH PROTOTYPE
+          </div>
         </div>
       </Container>
     </footer>

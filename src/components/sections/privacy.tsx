@@ -1,107 +1,108 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Section } from "../layout/section";
 import { Badge } from "../ui/badge";
 import { PRIVACY_COMPARISON } from "@/content/mock-data";
-import { ShieldCheck, HardDrive, Lock, ShieldAlert } from "lucide-react";
 
 export function Privacy() {
   return (
-    <Section id="privacy">
-      <Container className="space-y-12">
+    <section id="privacy" className="py-16 md:py-24 bg-background border-b border-border">
+      <Container className="space-y-12 max-w-5xl">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="neutral">Privacidad Absoluta</Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Tus reuniones se quedan en tu equipo
+          <Badge variant="sage">§ 07.0 / THE LOCAL CONSTITUTION</Badge>
+          <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+            Conversational data resides solely on your machine
           </h2>
-          <p className="text-base text-foreground-muted">
-            Tus conversaciones contienen estrategias, contratos y datos sensibles. No deberían enviarse a servidores de terceros para ser comprendidas.
+          <p className="font-sans text-sm sm:text-base text-foreground-muted">
+            Executive strategy, client commitments, and internal negotiations should not be transmitted across external network perimeters.
           </p>
         </div>
 
-        {/* Architecture Flow Diagram */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* Architecture Flow Comparison Plates */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* On-device architecture */}
-          <div className="p-6 sm:p-8 rounded-2xl border-2 border-emerald-500/80 bg-surface-raised space-y-6 shadow-xs">
-            <div className="flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>Arquitectura Dolphin (Local-First)</span>
+          <div className="p-6 sm:p-8 rounded-[4px] border border-editorial-sage bg-paper-light space-y-5 shadow-card">
+            <div className="flex items-center justify-between pb-2 border-b border-border-subtle font-mono text-[10px]">
+              <span className="text-editorial-sage font-semibold uppercase tracking-wider">
+                EXHIBIT 7A — LOCAL ARCHITECTURE
+              </span>
+              <span className="text-editorial-sage bg-editorial-sage-bg px-1.5 py-0.2 rounded-[2px] border border-[#D1E0D6]">
+                Zero Cloud Leakage
               </span>
             </div>
 
-            {/* Simple Box Diagram */}
-            <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-3 font-mono text-xs text-center">
-              <div className="p-2.5 rounded-lg bg-white border border-border text-foreground font-semibold">
-                Micrófono / Audio de Reunión
+            {/* Simple Clean Schematic */}
+            <div className="p-4 rounded-[4px] bg-paper border border-border space-y-2.5 font-mono text-[11px] text-center">
+              <div className="p-2 bg-paper-light border border-border text-foreground font-medium rounded-[2px]">
+                Microphone / Audio Buffer
               </div>
-              <div className="text-zinc-400 font-bold">↓ (Directo en tu SO)</div>
-              <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 font-semibold flex items-center justify-center gap-2">
-                <HardDrive className="w-4 h-4 text-emerald-700" />
-                <span>Inferencia Local (QVAC Engine)</span>
+              <div className="text-foreground-faded text-[10px]">↓ (Direct OS Pipe to RAM)</div>
+              <div className="p-2 bg-editorial-sage-bg border border-[#D1E0D6] text-editorial-sage font-medium rounded-[2px]">
+                Local Inference (QVAC On-Device Engine)
               </div>
-              <div className="text-zinc-400 font-bold">↓</div>
-              <div className="p-2.5 rounded-lg bg-white border border-border text-foreground font-semibold">
-                Comprensión e Insights en tu Pantalla
+              <div className="text-foreground-faded text-[10px]">↓ (Zero Network IO)</div>
+              <div className="p-2 bg-paper-light border border-border text-foreground font-medium rounded-[2px]">
+                Structured Marginalia on Display
               </div>
             </div>
 
-            <p className="text-xs text-zinc-600 leading-relaxed">
-              El audio nunca sale de la memoria de tu dispositivo. Cero telemetría de contenido y 100% de cumplimiento con políticas de seguridad corporativas.
+            <p className="font-sans text-xs text-foreground-muted leading-relaxed">
+              Audio vectors exist solely within local volatile memory. Zero telemetry of conversation content and full compliance with sovereign privacy protocols.
             </p>
           </div>
 
           {/* Cloud traditional architecture */}
-          <div className="p-6 sm:p-8 rounded-2xl border border-border bg-surface-raised space-y-6 opacity-85">
-            <div className="flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold font-mono text-zinc-600 bg-zinc-100 px-2.5 py-1 rounded-full border border-zinc-200">
-                <ShieldAlert className="w-4 h-4 text-zinc-500" />
-                <span>Asistentes Cloud Tradicionales</span>
+          <div className="p-6 sm:p-8 rounded-[4px] border border-border bg-paper space-y-5">
+            <div className="flex items-center justify-between pb-2 border-b border-border-subtle font-mono text-[10px]">
+              <span className="text-foreground-faded font-semibold uppercase tracking-wider">
+                EXHIBIT 7B — CLOUD RECORDERS
+              </span>
+              <span className="text-foreground-faded bg-surface px-1.5 py-0.2 rounded-[2px] border border-border">
+                Third-Party Transit
               </span>
             </div>
 
             {/* Simple Box Diagram */}
-            <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-3 font-mono text-xs text-center">
-              <div className="p-2.5 rounded-lg bg-white border border-border text-foreground font-semibold">
-                Micrófono / Audio de Reunión
+            <div className="p-4 rounded-[4px] bg-paper-light border border-border space-y-2.5 font-mono text-[11px] text-center">
+              <div className="p-2 bg-paper border border-border text-foreground font-medium rounded-[2px]">
+                Microphone / Audio Buffer
               </div>
-              <div className="text-rose-400 font-bold">↓ (Streaming a través de Internet)</div>
-              <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-900 font-semibold">
-                Servidores Cloud de Terceros
+              <div className="text-editorial-terracotta text-[10px]">↓ (Encrypted Internet Transit)</div>
+              <div className="p-2 bg-editorial-terracotta-bg border border-[#ECC9C2] text-editorial-terracotta font-medium rounded-[2px]">
+                Third-Party Cloud Servers & Storage
               </div>
-              <div className="text-zinc-400 font-bold">↓</div>
-              <div className="p-2.5 rounded-lg bg-white border border-border text-foreground font-semibold">
-                Respuesta enviada de vuelta
+              <div className="text-foreground-faded text-[10px]">↓ (Round-trip Latency)</div>
+              <div className="p-2 bg-paper border border-border text-foreground font-medium rounded-[2px]">
+                Summary Returned Hours Later
               </div>
             </div>
 
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              Vulnerabilidad a intercepciones de red, exposición a términos de uso de terceros y retención de datos en centros de datos externos.
+            <p className="font-sans text-xs text-foreground-muted leading-relaxed">
+              Subject to third-party data retention policies, multi-tenant risk, sub-processor changes, and perpetual cloud exposure.
             </p>
           </div>
         </div>
 
-        {/* Feature Comparison Table */}
-        <div className="max-w-4xl mx-auto border border-border rounded-2xl overflow-hidden bg-surface-raised">
+        {/* Feature Comparison Ledger Table */}
+        <div className="border border-border rounded-[4px] overflow-hidden bg-paper-light">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-zinc-100/70 border-b border-border text-foreground font-semibold">
+            <table className="w-full text-left text-xs font-sans">
+              <thead className="bg-surface border-b border-border font-mono text-[10px] uppercase tracking-wider text-foreground">
                 <tr>
-                  <th className="py-3 px-4 sm:px-6">Característica</th>
-                  <th className="py-3 px-4 sm:px-6 text-emerald-800 bg-emerald-50/50">Dolphin (On-Device)</th>
-                  <th className="py-3 px-4 sm:px-6 text-zinc-600">Asistentes en la Nube</th>
+                  <th className="py-2.5 px-4 sm:px-6">Attribute</th>
+                  <th className="py-2.5 px-4 sm:px-6 text-editorial-sage bg-editorial-sage-bg/40">Dolphin (On-Device)</th>
+                  <th className="py-2.5 px-4 sm:px-6 text-foreground-muted">Cloud SaaS Assistants</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/60">
+              <tbody className="divide-y divide-border-subtle">
                 {PRIVACY_COMPARISON.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-zinc-50/50">
-                    <td className="py-3 px-4 sm:px-6 font-medium text-foreground">
+                  <tr key={idx} className="hover:bg-paper/50">
+                    <td className="py-2.5 px-4 sm:px-6 font-medium text-foreground">
                       {row.feature}
                     </td>
-                    <td className="py-3 px-4 sm:px-6 text-emerald-700 font-medium bg-emerald-50/20">
+                    <td className="py-2.5 px-4 sm:px-6 text-editorial-sage font-mono text-[11px] bg-editorial-sage-bg/15">
                       {row.dolphinOnDevice}
                     </td>
-                    <td className="py-3 px-4 sm:px-6 text-zinc-500">
+                    <td className="py-2.5 px-4 sm:px-6 text-foreground-muted font-mono text-[11px]">
                       {row.traditionalCloud}
                     </td>
                   </tr>
@@ -111,6 +112,6 @@ export function Privacy() {
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

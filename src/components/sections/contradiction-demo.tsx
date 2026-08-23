@@ -1,81 +1,64 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Section } from "../layout/section";
 import { Badge } from "../ui/badge";
-import { AlertTriangle, HelpCircle, Clock, CheckCircle2 } from "lucide-react";
 
 export function ContradictionDemo() {
   return (
-    <Section id="contradiction" hasBackground>
-      <Container className="space-y-12">
+    <section id="contradiction" className="py-16 md:py-24 bg-paper border-b border-border">
+      <Container className="space-y-12 max-w-5xl">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="warning">Detección de Contradicciones</Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Detecta inconsistencias antes de que sea tarde
+          <Badge variant="ochre">§ 06.0 / CONFLICT AUDIT</Badge>
+          <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+            Surfacing logical discrepancies in real time
           </h2>
-          <p className="text-base text-foreground-muted">
-            En llamadas largas, los acuerdos cambian o se contradicen sin que los participantes lo noten.
+          <p className="font-sans text-sm sm:text-base text-foreground-muted">
+            In extended working sessions, assumptions shift without notice. Dolphin flags conflicting business logic immediately.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto p-6 sm:p-8 rounded-2xl border border-amber-200 bg-surface-raised space-y-8 shadow-xs">
+        <div className="p-6 sm:p-8 rounded-[4px] border border-border bg-paper-light space-y-6">
           {/* Chronological discrepancy flow */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-zinc-500 font-semibold flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>10:14 AM · Minuto 14</span>
-                </span>
-                <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-zinc-200 text-zinc-700">
-                  Regla inicial
-                </span>
+            <div className="p-4 rounded-[4px] bg-paper border border-border space-y-2">
+              <div className="flex items-center justify-between font-mono text-[10px] pb-1 border-b border-border-subtle">
+                <span className="text-foreground-faded font-semibold">RECORDED AT 10:14 AM</span>
+                <span className="uppercase text-foreground-muted">Initial Assertion</span>
               </div>
-              <p className="text-sm font-medium text-foreground">
-                &ldquo;Toda compra sin excepción necesita la aprobación del manager antes de enviarse.&rdquo;
+              <p className="font-serif text-sm italic text-foreground leading-relaxed">
+                &ldquo;Every purchase without exception requires manager sign-off prior to accounting dispatch.&rdquo;
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-zinc-500 font-semibold flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>10:27 AM · Minuto 27</span>
-                </span>
-                <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-amber-100 text-amber-800">
-                  Nueva afirmación
-                </span>
+            <div className="p-4 rounded-[4px] bg-editorial-ochre-bg border border-[#E8DEC7] space-y-2">
+              <div className="flex items-center justify-between font-mono text-[10px] pb-1 border-b border-[#E8DEC7]">
+                <span className="text-editorial-ochre font-semibold">RECORDED AT 10:27 AM</span>
+                <span className="uppercase text-editorial-ochre">Contradictory Claim</span>
               </div>
-              <p className="text-sm font-medium text-foreground">
-                &ldquo;Las compras menores a $500 en realidad se procesan de forma automática.&rdquo;
+              <p className="font-serif text-sm italic text-foreground leading-relaxed">
+                &ldquo;Purchases below $500 actually go through automatically without waiting for manager sign-off.&rdquo;
               </p>
             </div>
           </div>
 
           {/* Dolphin Inferred Insight */}
-          <div className="p-5 rounded-xl border border-l-4 border-l-amber-500 border-amber-200 bg-amber-50/40 space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="p-1 rounded-md bg-amber-100 text-amber-800">
-                <AlertTriangle className="w-4 h-4" />
+          <div className="p-4 sm:p-5 rounded-[4px] border-l-2 border-l-editorial-ochre border border-border bg-surface space-y-2.5 font-sans">
+            <div className="flex items-center justify-between font-mono text-[10px] pb-1 border-b border-border-subtle">
+              <span className="text-editorial-ochre font-bold uppercase tracking-wider">
+                AUDIT NOTE: UNRESOLVED RULE EXCEPTION
               </span>
-              <span className="text-xs font-bold font-mono uppercase text-amber-900 tracking-wider">
-                Inconsistencia Detectada en Vivo
-              </span>
+              <span className="text-foreground-faded">MARGINAL QUERY</span>
             </div>
 
-            <p className="text-sm text-amber-950 font-medium leading-relaxed">
-              Existe una aparente excepción a la regla de aprobación que no fue clarificada para el equipo de desarrollo.
+            <p className="text-xs text-foreground leading-relaxed">
+              <strong>Observed conflict:</strong> The specification contains an unhandled exception path regarding the $500 threshold and automated processing bypass.
             </p>
 
-            <div className="pt-2 border-t border-amber-200/80 flex items-start gap-2 text-xs text-amber-900">
-              <HelpCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-              <span>
-                <strong>Pregunta recomendada por Dolphin:</strong> &ldquo;¿Las compras menores a $500 omiten la aprobación del manager o requieren una notificación asíncrona?&rdquo;
-              </span>
+            <div className="pt-2 border-t border-border-subtle text-xs text-foreground-muted font-serif italic">
+              <strong>Suggested inquiry for the room:</strong> &ldquo;Do orders under $500 completely bypass manager approval, or do they generate an asynchronous notification?&rdquo;
             </div>
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

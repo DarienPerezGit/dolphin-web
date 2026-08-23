@@ -2,84 +2,49 @@
 
 import React from "react";
 import { Container } from "../layout/container";
-import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
-import { MeetingWindow } from "../product/meeting-window";
 import { PRODUCT_INFO } from "@/content/mock-data";
-import { ArrowRight, ShieldCheck, Sparkles, Github } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
-      {/* Background subtle radial gradient & fine pattern */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-100/90 via-background to-background" />
-      <div 
-        className="absolute inset-0 -z-10 opacity-[0.025] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" 
-        aria-hidden="true" 
-      />
-
-      <Container className="space-y-10 text-center">
-        {/* Badge & Pill */}
-        <div className="inline-flex items-center gap-2">
-          <Badge variant="neutral" className="py-1 px-3 gap-2 bg-white/90 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-zinc-700 font-medium">Local-First Meeting Intelligence</span>
-          </Badge>
+    <section className="relative pt-12 pb-12 md:pt-16 md:pb-14 bg-[#FBF9F5]">
+      <Container className="space-y-6 text-center max-w-4xl">
+        {/* Folio Tag Stamp */}
+        <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground-muted px-3 py-1 border border-[#D8D2C5] bg-[#F5F2EB] rounded-[3px]">
+          <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage" />
+          <span>CAPA COGNITIVA LOCAL · INFERENCIA EN DISPOSITIVO</span>
         </div>
 
         {/* Hero Headlines */}
-        <div className="max-w-4xl mx-auto space-y-5">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.12]">
-            Understand the meeting <br className="hidden sm:inline" />
-            <span className="text-foreground/85">while you&apos;re still in it.</span>
+        <div className="space-y-3">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground leading-[1.08]">
+            Entiende la reunión <br className="hidden sm:inline" />
+            <span className="italic text-foreground-muted">mientras está pasando.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-foreground-muted max-w-2xl mx-auto leading-relaxed font-normal">
-            {PRODUCT_INFO.subHeadline}
+          <p className="font-sans text-base sm:text-lg md:text-xl text-foreground-muted max-w-xl mx-auto leading-relaxed font-normal">
+            Dolphin mantiene un modelo mental activo y privado de tus conversaciones en tiempo real.
           </p>
         </div>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
-          <Button
-            size="lg"
-            onClick={() => {
-              document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="gap-2 shadow-md hover:shadow-lg transition-all"
+        {/* Essential Invocations */}
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-1 font-mono text-xs">
+          <a
+            href="#demo"
+            className="inline-flex items-center justify-center px-4 py-2 font-mono uppercase tracking-wider text-background bg-foreground rounded-[3px] hover:bg-[#292524] transition-colors"
           >
-            <span>See how it works</span>
-            <ArrowRight className="w-4 h-4" />
-          </Button>
+            Ver Simulación ↓
+          </a>
 
           <a
             href={PRODUCT_INFO.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-1.5 px-4 py-2 font-mono uppercase tracking-wider text-foreground bg-[#FBF9F5] border border-[#D8D2C5] rounded-[3px] hover:border-foreground transition-colors"
           >
-            <Button variant="outline" size="lg" className="gap-2">
-              <Github className="w-4 h-4" />
-              <span>View on GitHub</span>
-            </Button>
+            <span>Código Fuente</span>
+            <ArrowUpRight className="w-3 h-3 opacity-60" />
           </a>
-        </div>
-
-        {/* Value badges bar */}
-        <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs font-medium text-foreground-muted">
-          <span className="inline-flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>Private by design · On-Device</span>
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Sparkles className="w-4 h-4 text-amber-600" />
-            <span>Semantics beyond transcription</span>
-          </span>
-        </div>
-
-        {/* Interactive Live Demo Window */}
-        <div id="demo" className="pt-6 max-w-5xl mx-auto scroll-mt-24">
-          <MeetingWindow />
         </div>
       </Container>
     </section>

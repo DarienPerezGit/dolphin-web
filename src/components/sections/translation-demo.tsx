@@ -1,88 +1,78 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Section } from "../layout/section";
 import { Badge } from "../ui/badge";
-import { ArrowLeftRight, Code2, Users, Check } from "lucide-react";
 
 export function TranslationDemo() {
   return (
-    <Section id="translation">
+    <section id="translation" className="py-16 md:py-24 bg-background border-b border-border">
       <Container className="space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="neutral">Traducción Bidireccional</Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Conectando el lenguaje de negocio con el técnico
+          <Badge variant="neutral">§ 05.0 / BIDIRECTIONAL TRANSLATION</Badge>
+          <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
+            Bridging technical jargon and business semantics
           </h2>
-          <p className="text-base text-foreground-muted">
-            Dolphin traduce en ambas direcciones para que nadie se quede atrás en la conversación.
+          <p className="font-sans text-sm sm:text-base text-foreground-muted">
+            Dolphin translates symmetrically across domains so every participant retains complete comprehension.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Técnico -> Humano */}
-          <div className="p-6 sm:p-8 rounded-2xl border border-border bg-surface-raised space-y-6 flex flex-col justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {/* Technical -> Human */}
+          <div className="p-6 sm:p-8 rounded-[4px] border border-border bg-paper-light space-y-5 flex flex-col justify-between">
             <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="p-2 rounded-lg bg-purple-50 text-purple-700 border border-purple-200">
-                  <Code2 className="w-4 h-4" />
-                </span>
-                <span className="text-xs font-mono font-bold text-purple-700 uppercase">
-                  Técnico ➔ Humano
-                </span>
+              <div className="flex items-center justify-between pb-2 border-b border-border-subtle font-mono text-[10px]">
+                <span className="text-editorial-lavender font-semibold">FIG. 5A — TECHNICAL ➔ HUMAN</span>
+                <span className="text-foreground-faded uppercase tracking-wider">Contextual Lexicon</span>
               </div>
 
-              <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-1">
-                <p className="text-xs font-mono text-zinc-500">Alex Rivera (Lead Engineer):</p>
-                <p className="text-sm font-medium text-foreground">
-                  &ldquo;Tendremos que hacer esa operación idempotente.&rdquo;
+              <div className="p-3.5 rounded-[4px] bg-paper border border-border space-y-1">
+                <span className="font-mono text-[10px] text-foreground-faded block">Alex Rivera (Lead Engineer):</span>
+                <p className="font-serif text-sm italic text-foreground">
+                  &ldquo;We will need to make that ERP sync operation idempotent.&rdquo;
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <p className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
-                  Traducción contextual de Dolphin:
-                </p>
-                <div className="p-4 rounded-xl bg-purple-50/50 border border-purple-200 text-sm space-y-2">
-                  <p className="font-semibold text-purple-950">
-                    Idempotencia:
+              <div className="space-y-1.5">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-foreground-faded block">
+                  Dolphin Marginal Note:
+                </span>
+                <div className="p-3.5 rounded-[4px] bg-editorial-lavender-bg border border-[#D2D6E4] text-xs space-y-1.5 font-sans">
+                  <p className="font-serif text-sm font-semibold text-editorial-lavender">
+                    Idempotence
                   </p>
-                  <p className="text-xs text-purple-900 leading-relaxed">
-                    Ejecutar la misma acción varias veces debe producir el mismo resultado final. Si la red falla y se reintenta la sincronización con el ERP, no se generarán cobros ni órdenes duplicadas.
+                  <p className="text-foreground-muted leading-relaxed">
+                    Executing the exact same operation multiple times produces the identical final state. If the network drops and the sync is retried, no duplicate ledger charges or double shipments will occur.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Negocio -> Técnico */}
-          <div className="p-6 sm:p-8 rounded-2xl border border-border bg-surface-raised space-y-6 flex flex-col justify-between">
+          {/* Business -> Technical */}
+          <div className="p-6 sm:p-8 rounded-[4px] border border-border bg-paper-light space-y-5 flex flex-col justify-between">
             <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="p-2 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
-                  <Users className="w-4 h-4" />
-                </span>
-                <span className="text-xs font-mono font-bold text-blue-700 uppercase">
-                  Negocio ➔ Técnico
-                </span>
+              <div className="flex items-center justify-between pb-2 border-b border-border-subtle font-mono text-[10px]">
+                <span className="text-editorial-sage font-semibold">FIG. 5B — BUSINESS ➔ TECHNICAL</span>
+                <span className="text-foreground-faded uppercase tracking-wider">Architecture Spec</span>
               </div>
 
-              <div className="p-4 rounded-xl bg-zinc-50 border border-border space-y-1">
-                <p className="text-xs font-mono text-zinc-500">Sarah Jenkins (Client / Operations):</p>
-                <p className="text-sm font-medium text-foreground">
-                  &ldquo;El manager lo revisa antes de que contabilidad lo envíe.&rdquo;
+              <div className="p-3.5 rounded-[4px] bg-paper border border-border space-y-1">
+                <span className="font-mono text-[10px] text-foreground-faded block">Sarah Jenkins (Operations):</span>
+                <p className="font-serif text-sm italic text-foreground">
+                  &ldquo;The manager looks at it before the accounting team sends it.&rdquo;
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <p className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
-                  Interpretación técnica de Dolphin:
-                </p>
-                <div className="p-4 rounded-xl bg-blue-50/50 border border-blue-200 text-sm space-y-2">
-                  <p className="font-semibold text-blue-950">
-                    Flujo de Aprobación RBAC:
+              <div className="space-y-1.5">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-foreground-faded block">
+                  Dolphin Architectural Spec:
+                </span>
+                <div className="p-3.5 rounded-[4px] bg-editorial-sage-bg border border-[#D1E0D6] text-xs space-y-1.5 font-sans">
+                  <p className="font-serif text-sm font-semibold text-editorial-sage">
+                    RBAC Approval State Machine
                   </p>
-                  <p className="text-xs text-blue-900 leading-relaxed">
-                    Requiere un workflow con estados (`Pending` ➔ `Approved` ➔ `Processed`), permisos de rol (*Role-Based Access Control*) y registro de auditoría (*Audit Trail*) antes del despacho.
+                  <p className="text-foreground-muted leading-relaxed">
+                    Requires a stateful approval workflow (<code className="font-mono text-[11px] bg-paper px-1 py-0.5 rounded border border-border">Pending_Review</code> → <code className="font-mono text-[11px] bg-paper px-1 py-0.5 rounded border border-border">Approved</code> → <code className="font-mono text-[11px] bg-paper px-1 py-0.5 rounded border border-border">Dispatched</code>), role-based permissions, and an immutable audit log.
                   </p>
                 </div>
               </div>
@@ -90,6 +80,6 @@ export function TranslationDemo() {
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

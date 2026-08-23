@@ -3,26 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --surface: #f9fafb;
-  --surface-raised: #ffffff;
+  /* Warm editorial paper palette (Ivory / Off-white / Warm Linen) */
+  --background: #FBF9F5;
+  --paper: #F7F5F0;
+  --paper-warm: #F3EFE6;
+  --paper-light: #FFFFFF;
   
-  --foreground: #09090b;
-  --foreground-muted: #71717a;
+  --surface: #F5F2EB;
+  --surface-raised: #FFFFFF;
+  --surface-sunken: #EFEBE1;
   
-  --border: #e4e4e7;
-  --border-strong: #d4d4d8;
+  /* Rich deep carbon ink */
+  --foreground: #1C1917;
+  --foreground-muted: #6B645C;
+  --foreground-faded: #9C9488;
   
-  --accent: #09090b;
-  --accent-muted: #f4f4f5;
-  --accent-foreground: #ffffff;
+  /* Delicate hairline editorial rules */
+  --border: #E6E0D4;
+  --border-strong: #D3CABA;
+  --border-subtle: #F0ECE4;
   
-  --success: #16a34a;
-  --warning: #d97706;
-  --danger: #dc2626;
+  /* Editorial accents (muted, desaturated print inks) */
+  --accent: #1C1917;
+  --accent-muted: #F0ECE4;
+  --accent-foreground: #1C1917;
+  
+  --success: #3D6047;
+  --warning: #9E782F;
+  --danger: #B94732;
 
   --font-geist-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-geist-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-geist-mono: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 @layer base {
@@ -30,14 +41,71 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-zinc-900 selection:text-white;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground antialiased selection:bg-[#EFEBE1] selection:text-[#1C1917];
+    font-feature-settings: "rlig" 1, "calt" 1, "cv02" 1, "cv03" 1, "cv04" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Headings editorial defaults */
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight text-foreground;
   }
 }
 
-/* Accessible focus ring */
+@layer components {
+  /* Subtle print paper texture and ruled margins */
+  .bg-paper-texture {
+    background-color: var(--background);
+    background-image: 
+      radial-gradient(at 15% 15%, rgba(243, 239, 230, 0.6) 0px, transparent 50%),
+      radial-gradient(at 85% 85%, rgba(239, 235, 225, 0.5) 0px, transparent 50%);
+  }
+
+  .bg-editorial-grid {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(230, 224, 212, 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(230, 224, 212, 0.35) 1px, transparent 1px);
+  }
+
+  /* Notion / Print editorial card */
+  .print-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px 0 rgba(28, 25, 23, 0.03), 0 1px 2px -1px rgba(28, 25, 23, 0.02);
+    border-radius: 4px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .print-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 4px 14px -2px rgba(28, 25, 23, 0.05);
+  }
+
+  /* GPU-Accelerated Continuous Marquee Track (Smooth 60fps, Zero Layout Thrashing) */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    animation: marquee-gpu 40s linear infinite;
+    contain: layout paint;
+  }
+}
+
+@keyframes marquee-gpu {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Accessible focus ring styled like an editorial bracket */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 1.5px solid var(--foreground);
   outline-offset: 2px;
 }
 
@@ -50,5 +118,9 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .marquee-track {
+    animation: none !important;
+    overflow-x: auto;
   }
 }
