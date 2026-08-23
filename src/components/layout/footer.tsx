@@ -6,61 +6,61 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-paper py-14 text-xs font-sans text-foreground-muted">
-      <Container className="space-y-10 max-w-5xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8 border-b border-border-subtle">
+    <footer className="border-t border-stone-200/80 bg-[#FAF8F5] py-14 text-xs font-sans text-stone-500">
+      <Container className="space-y-10 max-w-6xl">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8 border-b border-stone-200/60">
           <div className="space-y-2 max-w-md">
             <div className="flex items-center gap-2">
-              <DolphinLogo size={20} />
+              <DolphinLogo size={32} textColor="text-stone-900" />
             </div>
-            <p className="text-xs text-foreground-muted leading-relaxed font-serif">
-              {PRODUCT_INFO.tagline} A local-first cognitive substrate for complex proceedings.
+            <p className="text-xs text-stone-500 leading-relaxed font-sans">
+              Capa de inteligencia local para reuniones. Comprensión semántica, detección de contradicciones y privacidad total on-device.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 font-mono text-[11px]">
+          <div className="flex flex-wrap items-center gap-6 font-sans text-xs">
             <a
-              href="#demo"
-              className="text-foreground-muted hover:text-foreground transition-colors"
+              href="#infografias"
+              className="text-stone-600 hover:text-stone-950 transition-colors"
             >
-              01. Live Folio
+              Infografías
             </a>
             <a
-              href="#capabilities"
-              className="text-foreground-muted hover:text-foreground transition-colors"
+              href="#demo"
+              className="text-stone-600 hover:text-stone-950 transition-colors"
             >
-              02. Instruments
+              Simulación
             </a>
             <a
               href="#privacy"
-              className="text-foreground-muted hover:text-foreground transition-colors"
+              className="text-stone-600 hover:text-stone-950 transition-colors"
             >
-              03. Constitution
+              Privacidad
             </a>
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1 text-stone-600 hover:text-stone-950 transition-colors"
             >
-              <span>Repository</span>
+              <span>GitHub</span>
               <ArrowUpRight className="w-3 h-3 opacity-60" />
             </a>
           </div>
         </div>
 
-        {/* Colophon & Substrate Metadata */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-[10px] text-foreground-faded uppercase tracking-wider">
-          <div className="flex items-center gap-4">
-            <span>COLOPHON: EDITION 2026</span>
+        {/* Bottom Colophon */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-sans text-xs text-stone-400">
+          <div className="flex items-center gap-3">
+            <span>Dolphin © 2026</span>
             <span>·</span>
-            <span>SUBSTRATE: QVAC ON-DEVICE</span>
+            <span>Motor QVAC Local</span>
             <span>·</span>
-            <span>ZERO CLOUD TELEMETRY</span>
+            <span>Inferencia On-Device</span>
           </div>
 
           <div>
-            OPEN-SOURCE RESEARCH PROTOTYPE
+            Prototipo de Investigación Open-Source
           </div>
         </div>
       </Container>

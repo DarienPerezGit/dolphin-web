@@ -3,28 +3,32 @@
 import React from "react";
 import { Container } from "../layout/container";
 import { MeetingWindow } from "../product/meeting-window";
+import { Boxes } from "../ui/background-boxes";
 
 export function DemoSection() {
   return (
-    <section id="demo" className="py-16 md:py-24 bg-[#F7F5F0] border-b border-[#D8D2C5] scroll-mt-14">
-      <Container className="max-w-[1340px] space-y-6">
+    <section id="demo" className="relative py-24 sm:py-32 bg-[#FAF8F5] scroll-mt-14 font-sans overflow-hidden select-none">
+      
+      {/* 1. Interactive Background Boxes Grid (Matching Carousel & Infographies) */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-auto z-0">
+        <Boxes />
+        <div className="absolute inset-0 w-full h-full bg-[#FAF8F5]/50 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      </div>
+
+      <Container className="max-w-6xl space-y-12 text-left relative z-10">
+        
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3 border-b border-[#D8D2C5]">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-xs text-editorial-sage font-bold uppercase tracking-widest">
-              SIMULACIÓN EN VIVO
-            </span>
-            <span className="text-[#D8D2C5]">|</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-foreground font-normal tracking-tight">
-              Acta de Sesión y Razonamiento en Directo
-            </h2>
-          </div>
-          <span className="font-mono text-[10px] text-foreground-faded uppercase tracking-widest">
-            Buffer Local de Memoria
-          </span>
+        <div className="space-y-3 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-stone-950 tracking-[-0.03em] leading-tight">
+            Acta de reunión y razonamiento <br className="hidden sm:inline" />
+            <span className="text-stone-500 italic font-serif">en directo.</span>
+          </h2>
+          <p className="text-base sm:text-lg text-stone-600 font-normal leading-relaxed">
+            Observa el flujo de una conversación real, la transcripción instantánea y cómo Dolphin detecta discrepancias de reglas y clarificaciones técnicas al vuelo.
+          </p>
         </div>
 
-        {/* Interactive Folio Window */}
+        {/* Interactive Folio Window with Blue Accent Block and PiP Video */}
         <div className="w-full">
           <MeetingWindow />
         </div>
