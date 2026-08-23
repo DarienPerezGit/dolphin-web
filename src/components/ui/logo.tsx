@@ -33,7 +33,7 @@ export function DolphinLogo({
       />
 
       {showText && (
-        <span className={cn("font-sans text-xl sm:text-2xl font-semibold tracking-tight leading-none", textColor)}>
+        <span className={cn("font-sans text-xl sm:text-2xl font-bold tracking-[-0.02em] leading-none", textColor)}>
           Dolphin
         </span>
       )}
