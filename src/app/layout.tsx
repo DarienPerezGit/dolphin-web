@@ -17,15 +17,25 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="min-h-screen bg-background text-foreground flex flex-col font-sans relative">
-        {/* Continuous Viewport Top Edge Defocus Diffusion (Smooth fade out, zero boxes) */}
+        {/* Top Edge Compact Diffusion (Soft, matched with sides, reduced reach) */}
         <div 
-          className="fixed top-0 inset-x-0 h-14 sm:h-16 pointer-events-none z-40 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_25%,transparent_100%)]" 
+          className="fixed top-0 inset-x-0 h-9 sm:h-11 pointer-events-none z-40 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/75 to-transparent backdrop-blur-[6px] [mask-image:linear-gradient(to_bottom,black_30%,transparent_100%)]" 
           aria-hidden="true" 
         />
 
-        {/* Continuous Viewport Bottom Edge Defocus Diffusion (Smooth fade in, zero boxes) */}
+        {/* Bottom Edge Compact Diffusion (Soft, matched with sides, reduced reach) */}
         <div 
-          className="fixed bottom-0 inset-x-0 h-14 sm:h-16 pointer-events-none z-40 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_top,black_25%,transparent_100%)]" 
+          className="fixed bottom-0 inset-x-0 h-9 sm:h-11 pointer-events-none z-40 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/75 to-transparent backdrop-blur-[6px] [mask-image:linear-gradient(to_top,black_30%,transparent_100%)]" 
+          aria-hidden="true" 
+        />
+
+        {/* Lateral Soft Edge Diffusion (Subtle feathering matching the perimeter) */}
+        <div 
+          className="fixed left-0 inset-y-0 w-4 sm:w-8 pointer-events-none z-30 bg-gradient-to-r from-[#FBF9F5]/80 to-transparent" 
+          aria-hidden="true" 
+        />
+        <div 
+          className="fixed right-0 inset-y-0 w-4 sm:w-8 pointer-events-none z-30 bg-gradient-to-l from-[#FBF9F5]/80 to-transparent" 
           aria-hidden="true" 
         />
 
