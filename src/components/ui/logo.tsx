@@ -22,7 +22,7 @@ export function DolphinLogo({
   textColor?: string;
 }) {
   return (
-    <div className={cn("inline-flex items-center gap-3 select-none group", className)}>
+    <div className={cn("inline-flex items-center gap-3.5 select-none group", className)}>
       <img
         src="/images/logo.png"
         alt="Dolphin Logo"
@@ -33,7 +33,7 @@ export function DolphinLogo({
       />
 
       {showText && (
-        <span className={cn("font-sans text-xl sm:text-2xl font-bold tracking-[-0.02em] leading-none", textColor)}>
+        <span className={cn("font-serif text-[20px] font-semibold tracking-[0.15em] leading-none", textColor)}>
           Dolphin
         </span>
       )}
