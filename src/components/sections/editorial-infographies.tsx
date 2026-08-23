@@ -25,18 +25,24 @@ export function EditorialInfographies() {
           </span>
         </div>
 
-        {/* Full-Bleed Frameless Infography Canvas */}
+        {/* Full-Bleed Frameless Infography Canvas with Deep Optical Defocus & Alpha Background Blend */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="w-full flex items-center justify-center overflow-hidden py-4"
+          className="relative w-full flex items-center justify-center overflow-hidden py-8 [mask-image:radial-gradient(ellipse_82%_76%_at_50%_50%,black_18%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.2)_70%,transparent_90%)] [-webkit-mask-image:radial-gradient(ellipse_82%_76%_at_50%_50%,black_18%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.2)_70%,transparent_90%)]"
         >
+          {/* Deep perimeter gradient blends */}
+          <div className="absolute inset-x-0 top-0 h-28 sm:h-36 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-20 sm:w-44 md:w-64 bg-gradient-to-r from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-20 sm:w-44 md:w-64 bg-gradient-to-l from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+
           <img
             src="/images/infography/figura-01-cognitive-map.png"
             alt="Mapeo cognitivo y topología semántica de la conversación en tiempo real"
-            className="w-full h-auto max-h-[88vh] object-contain mx-auto"
+            className="w-full h-auto max-h-[88vh] object-contain mx-auto mix-blend-multiply"
             loading="lazy"
           />
         </motion.div>
@@ -65,18 +71,24 @@ export function EditorialInfographies() {
           </span>
         </div>
 
-        {/* Full-Bleed Frameless Infography Canvas */}
+        {/* Full-Bleed Frameless Infography Canvas with Deep Optical Defocus & Alpha Background Blend */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="w-full flex items-center justify-center overflow-hidden py-4"
+          className="relative w-full flex items-center justify-center overflow-hidden py-8 [mask-image:radial-gradient(ellipse_82%_76%_at_50%_50%,black_18%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.2)_70%,transparent_90%)] [-webkit-mask-image:radial-gradient(ellipse_82%_76%_at_50%_50%,black_18%,rgba(0,0,0,0.7)_45%,rgba(0,0,0,0.2)_70%,transparent_90%)]"
         >
+          {/* Deep perimeter gradient blends */}
+          <div className="absolute inset-x-0 top-0 h-28 sm:h-36 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-20 sm:w-44 md:w-64 bg-gradient-to-r from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-20 sm:w-44 md:w-64 bg-gradient-to-l from-[#FBF9F5] via-[#FBF9F5]/70 to-transparent z-10 pointer-events-none" />
+
           <img
             src="/images/infography/figura-02-architecture-flow.png"
             alt="Arquitectura de inferencia local y flujo de memoria on-device"
-            className="w-full h-auto max-h-[88vh] object-contain mx-auto"
+            className="w-full h-auto max-h-[88vh] object-contain mx-auto mix-blend-multiply"
             loading="lazy"
           />
         </motion.div>
