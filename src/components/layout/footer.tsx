@@ -6,61 +6,49 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-paper py-14 text-xs font-sans text-foreground-muted">
-      <Container className="space-y-10 max-w-5xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8 border-b border-border-subtle">
+    <footer className="border-t border-[#D8D2C5] bg-[#F5F2EB] py-14 text-xs font-sans text-foreground-muted">
+      <Container className="space-y-10 max-w-6xl">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8 border-b border-[#D8D2C5]">
           <div className="space-y-2 max-w-md">
-            <div className="flex items-center gap-2">
-              <DolphinLogo size={20} />
-            </div>
+            <DolphinLogo size={20} />
             <p className="text-xs text-foreground-muted leading-relaxed font-serif">
-              {PRODUCT_INFO.tagline} A local-first cognitive substrate for complex proceedings.
+              {PRODUCT_INFO.tagline} Capa cognitiva local potenciada por el motor de inferencia QVAC.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 font-mono text-[11px]">
-            <a
-              href="#demo"
-              className="text-foreground-muted hover:text-foreground transition-colors"
-            >
-              01. Live Folio
+            <a href="#demo" className="text-foreground-muted hover:text-foreground transition-colors">
+              01. Folio Interactivo
             </a>
-            <a
-              href="#capabilities"
-              className="text-foreground-muted hover:text-foreground transition-colors"
-            >
-              02. Instruments
+            <a href="#infografias" className="text-foreground-muted hover:text-foreground transition-colors">
+              02. Infografías
             </a>
-            <a
-              href="#privacy"
-              className="text-foreground-muted hover:text-foreground transition-colors"
-            >
-              03. Constitution
+            <a href="#privacidad" className="text-foreground-muted hover:text-foreground transition-colors">
+              03. Privacidad
             </a>
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-foreground-muted hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1 text-foreground hover:text-foreground-muted transition-colors"
             >
-              <span>Repository</span>
+              <span>Repositorio GitHub</span>
               <ArrowUpRight className="w-3 h-3 opacity-60" />
             </a>
           </div>
         </div>
 
-        {/* Colophon & Substrate Metadata */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-[10px] text-foreground-faded uppercase tracking-wider">
           <div className="flex items-center gap-4">
-            <span>COLOPHON: EDITION 2026</span>
+            <span>COLOPHON: EDICIÓN 2026</span>
             <span>·</span>
-            <span>SUBSTRATE: QVAC ON-DEVICE</span>
+            <span>SUSTRATO: QVAC ON-DEVICE</span>
             <span>·</span>
-            <span>ZERO CLOUD TELEMETRY</span>
+            <span>CERO TELEMETRÍA CLOUD</span>
           </div>
 
           <div>
-            OPEN-SOURCE RESEARCH PROTOTYPE
+            PROTOTIPO DE INVESTIGACIÓN OPEN-SOURCE
           </div>
         </div>
       </Container>

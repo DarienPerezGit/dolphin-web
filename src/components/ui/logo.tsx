@@ -19,9 +19,8 @@ export function DolphinLogo({
 }) {
   return (
     <div className={cn("inline-flex items-center gap-2.5 select-none group", className)}>
-      {/* Ink-drawn woodblock/press emblem */}
       <div
-        className="relative flex items-center justify-center rounded-[4px] border border-border-strong bg-surface text-foreground p-1 transition-colors group-hover:border-foreground"
+        className="relative flex items-center justify-center rounded-[4px] border border-[#D8D2C5] bg-[#F5F2EB] text-[#1C1917] p-1 transition-colors group-hover:border-[#1C1917]"
         style={{ width: size + 6, height: size + 6 }}
         aria-hidden="true"
       >
@@ -34,7 +33,7 @@ export function DolphinLogo({
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          {/* Refined single-line ink acoustic crest & dolphin arc */}
+          {/* Refined ink-stroke acoustic crest */}
           <path d="M4 14.5C6.5 9 11.5 6 18 7.5C18.2 8.5 17.5 9.2 16.5 9.5C12.5 10.5 8.8 13.5 7.5 18" />
           <path d="M12 6.5C12 4.5 13.5 3.5 15 4.5" />
           <circle cx="17.5" cy="7.5" r="1" fill="currentColor" />
@@ -44,7 +43,7 @@ export function DolphinLogo({
 
       {showText && (
         <div className="flex items-baseline gap-2">
-          <span className="font-serif text-lg sm:text-xl font-medium tracking-tight text-foreground">
+          <span className="font-serif text-lg sm:text-xl font-medium tracking-tight text-[#1C1917]">
             Dolphin
           </span>
           <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-widest text-foreground-faded px-1.5 py-0.5 rounded-[3px] border border-border-subtle bg-paper">
@@ -59,7 +58,6 @@ export function DolphinLogo({
 export function Logo({
   className,
   size = "md",
-  showBadge = true,
 }: LogoProps) {
   const pixelSizes = {
     sm: 18,

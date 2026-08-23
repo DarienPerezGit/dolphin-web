@@ -1,108 +1,44 @@
 import React from "react";
 import { Container } from "../layout/container";
-import { Badge } from "../ui/badge";
 import { PRIVACY_COMPARISON } from "@/content/mock-data";
 
 export function Privacy() {
   return (
-    <section id="privacy" className="py-16 md:py-24 bg-background border-b border-border">
+    <section id="privacidad" className="py-20 md:py-28 bg-[#FBF9F5] border-t border-[#D8D2C5]">
       <Container className="space-y-12 max-w-5xl">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <Badge variant="sage">§ 07.0 / THE LOCAL CONSTITUTION</Badge>
-          <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal tracking-tight">
-            Conversational data resides solely on your machine
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-[3px] bg-[#EEF4F0] border border-[#D1E0D6] text-editorial-sage text-xs font-semibold font-mono">
+            <span>§ 05.0 / CONSTITUCIÓN DE PRIVACIDAD SOBERANA</span>
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-foreground tracking-tight">
+            Tus conversaciones nunca salen de tu equipo
           </h2>
-          <p className="font-sans text-sm sm:text-base text-foreground-muted">
-            Executive strategy, client commitments, and internal negotiations should not be transmitted across external network perimeters.
+          <p className="font-sans text-sm sm:text-base text-foreground-muted leading-relaxed">
+            Dolphin fue concebido para operar con 0 bytes de almacenamiento en la nube, cero telemetría externa y total soberanía sobre tus datos.
           </p>
         </div>
 
-        {/* Architecture Flow Comparison Plates */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* On-device architecture */}
-          <div className="p-6 sm:p-8 rounded-[4px] border border-editorial-sage bg-paper-light space-y-5 shadow-card">
-            <div className="flex items-center justify-between pb-2 border-b border-border-subtle font-mono text-[10px]">
-              <span className="text-editorial-sage font-semibold uppercase tracking-wider">
-                EXHIBIT 7A — LOCAL ARCHITECTURE
-              </span>
-              <span className="text-editorial-sage bg-editorial-sage-bg px-1.5 py-0.2 rounded-[2px] border border-[#D1E0D6]">
-                Zero Cloud Leakage
-              </span>
-            </div>
-
-            {/* Simple Clean Schematic */}
-            <div className="p-4 rounded-[4px] bg-paper border border-border space-y-2.5 font-mono text-[11px] text-center">
-              <div className="p-2 bg-paper-light border border-border text-foreground font-medium rounded-[2px]">
-                Microphone / Audio Buffer
-              </div>
-              <div className="text-foreground-faded text-[10px]">↓ (Direct OS Pipe to RAM)</div>
-              <div className="p-2 bg-editorial-sage-bg border border-[#D1E0D6] text-editorial-sage font-medium rounded-[2px]">
-                Local Inference (QVAC On-Device Engine)
-              </div>
-              <div className="text-foreground-faded text-[10px]">↓ (Zero Network IO)</div>
-              <div className="p-2 bg-paper-light border border-border text-foreground font-medium rounded-[2px]">
-                Structured Marginalia on Display
-              </div>
-            </div>
-
-            <p className="font-sans text-xs text-foreground-muted leading-relaxed">
-              Audio vectors exist solely within local volatile memory. Zero telemetry of conversation content and full compliance with sovereign privacy protocols.
-            </p>
-          </div>
-
-          {/* Cloud traditional architecture */}
-          <div className="p-6 sm:p-8 rounded-[4px] border border-border bg-paper space-y-5">
-            <div className="flex items-center justify-between pb-2 border-b border-border-subtle font-mono text-[10px]">
-              <span className="text-foreground-faded font-semibold uppercase tracking-wider">
-                EXHIBIT 7B — CLOUD RECORDERS
-              </span>
-              <span className="text-foreground-faded bg-surface px-1.5 py-0.2 rounded-[2px] border border-border">
-                Third-Party Transit
-              </span>
-            </div>
-
-            {/* Simple Box Diagram */}
-            <div className="p-4 rounded-[4px] bg-paper-light border border-border space-y-2.5 font-mono text-[11px] text-center">
-              <div className="p-2 bg-paper border border-border text-foreground font-medium rounded-[2px]">
-                Microphone / Audio Buffer
-              </div>
-              <div className="text-editorial-terracotta text-[10px]">↓ (Encrypted Internet Transit)</div>
-              <div className="p-2 bg-editorial-terracotta-bg border border-[#ECC9C2] text-editorial-terracotta font-medium rounded-[2px]">
-                Third-Party Cloud Servers & Storage
-              </div>
-              <div className="text-foreground-faded text-[10px]">↓ (Round-trip Latency)</div>
-              <div className="p-2 bg-paper border border-border text-foreground font-medium rounded-[2px]">
-                Summary Returned Hours Later
-              </div>
-            </div>
-
-            <p className="font-sans text-xs text-foreground-muted leading-relaxed">
-              Subject to third-party data retention policies, multi-tenant risk, sub-processor changes, and perpetual cloud exposure.
-            </p>
-          </div>
-        </div>
-
         {/* Feature Comparison Ledger Table */}
-        <div className="border border-border rounded-[4px] overflow-hidden bg-paper-light">
+        <div className="border border-[#D8D2C5] rounded-[4px] overflow-hidden bg-paper-light">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-sans">
-              <thead className="bg-surface border-b border-border font-mono text-[10px] uppercase tracking-wider text-foreground">
+              <thead className="bg-[#F5F2EB] border-b border-[#D8D2C5] font-mono text-[10px] uppercase tracking-wider text-foreground">
                 <tr>
-                  <th className="py-2.5 px-4 sm:px-6">Attribute</th>
-                  <th className="py-2.5 px-4 sm:px-6 text-editorial-sage bg-editorial-sage-bg/40">Dolphin (On-Device)</th>
-                  <th className="py-2.5 px-4 sm:px-6 text-foreground-muted">Cloud SaaS Assistants</th>
+                  <th className="py-3 px-6">Regla de Seguridad & Atributo</th>
+                  <th className="py-3 px-6 text-editorial-sage bg-[#EEF4F0]/60">Dolphin (IA Local On-Device)</th>
+                  <th className="py-3 px-6 text-foreground-muted">Asistentes en la Nube</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border-subtle">
+              <tbody className="divide-y divide-[#EBE6DC] font-medium text-foreground">
                 {PRIVACY_COMPARISON.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-paper/50">
-                    <td className="py-2.5 px-4 sm:px-6 font-medium text-foreground">
+                  <tr key={idx} className="hover:bg-paper/50 transition-colors">
+                    <td className="py-3.5 px-6 font-semibold text-foreground">
                       {row.feature}
                     </td>
-                    <td className="py-2.5 px-4 sm:px-6 text-editorial-sage font-mono text-[11px] bg-editorial-sage-bg/15">
+                    <td className="py-3.5 px-6 text-editorial-sage bg-[#EEF4F0]/20 font-mono text-xs">
                       {row.dolphinOnDevice}
                     </td>
-                    <td className="py-2.5 px-4 sm:px-6 text-foreground-muted font-mono text-[11px]">
+                    <td className="py-3.5 px-6 text-foreground-muted font-mono text-xs">
                       {row.traditionalCloud}
                     </td>
                   </tr>

@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+
 import React from "react";
-import { Container } from "../layout/container";
+import { motion } from "framer-motion";
 
 export function EditorialInfographies() {
   return (
-    <section className="py-16 md:py-24 bg-[#FBF9F5] space-y-20 border-b border-[#D8D2C5]">
-      {/* Plate 01: Full-Screen Central Showcase */}
-      <Container className="max-w-[1340px] space-y-6">
+    <section id="infografias" className="w-full bg-[#FBF9F5] py-14 sm:py-20 md:py-28 border-b border-[#D8D2C5]">
+      {/* 1. First Panoramic Infography (Full Viewport Presence, Zero Border Frame) */}
+      <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 md:px-10 space-y-6">
         {/* Minimal Folio Header */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3 border-b border-[#D8D2C5]">
           <div className="flex items-center gap-3">
@@ -14,33 +16,39 @@ export function EditorialInfographies() {
               FIGURA 01
             </span>
             <span className="text-[#D8D2C5]">|</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-foreground font-normal tracking-tight">
-              Mapeo Cognitivo de Conversación
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-foreground font-normal tracking-tight">
+              Mapeo Cognitivo y Topología Semántica de la Conversación
             </h2>
           </div>
           <span className="font-mono text-[10px] text-foreground-faded uppercase tracking-widest">
-            Semántica & Grafos en Tiempo Real
+            Semántica en Tiempo Real
           </span>
         </div>
 
-        {/* Grand Central Infography Canvas (Nearly Full Screen) */}
-        <div className="w-full rounded-2xl border border-[#D8D2C5] bg-[#F7F5F0] p-3 sm:p-6 md:p-8 overflow-hidden">
+        {/* Full-Bleed Frameless Infography Canvas */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full flex items-center justify-center overflow-hidden py-4"
+        >
           <img
             src="/images/infography/figura-01-cognitive-map.png"
-            alt="Mapeo cognitivo de la conversación en tiempo real"
-            className="w-full h-auto object-contain mx-auto rounded-xl"
+            alt="Mapeo cognitivo y topología semántica de la conversación en tiempo real"
+            className="w-full h-auto max-h-[88vh] object-contain mx-auto"
             loading="lazy"
           />
-        </div>
+        </motion.div>
 
         {/* Minimal Bottom Caption */}
-        <p className="font-serif italic text-xs sm:text-sm text-foreground-muted text-center max-w-3xl mx-auto">
-          Dolphin convierte el diálogo oral desestructurado en entidades de negocio, requerimientos técnicos y detección de inconsistencias al vuelo.
+        <p className="font-serif italic text-xs sm:text-sm text-foreground-muted text-center max-w-4xl mx-auto pt-2">
+          Dolphin estructura el diálogo oral desestructurado en entidades de negocio, requerimientos técnicos y detección de inconsistencias al vuelo.
         </p>
-      </Container>
+      </div>
 
-      {/* Plate 02: Full-Screen Central Showcase */}
-      <Container className="max-w-[1340px] space-y-6 pt-6">
+      {/* 2. Second Panoramic Infography (Full Viewport Presence, Zero Border Frame) */}
+      <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 md:px-10 space-y-6 pt-20 md:pt-28">
         {/* Minimal Folio Header */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3 border-b border-[#D8D2C5]">
           <div className="flex items-center gap-3">
@@ -48,8 +56,8 @@ export function EditorialInfographies() {
               FIGURA 02
             </span>
             <span className="text-[#D8D2C5]">|</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-foreground font-normal tracking-tight">
-              Arquitectura de Inferencia On-Device
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-foreground font-normal tracking-tight">
+              Arquitectura de Inferencia On-Device y Soberanía de Datos
             </h2>
           </div>
           <span className="font-mono text-[10px] text-foreground-faded uppercase tracking-widest">
@@ -57,21 +65,27 @@ export function EditorialInfographies() {
           </span>
         </div>
 
-        {/* Grand Central Infography Canvas (Nearly Full Screen) */}
-        <div className="w-full rounded-2xl border border-[#D8D2C5] bg-[#F7F5F0] p-3 sm:p-6 md:p-8 overflow-hidden">
+        {/* Full-Bleed Frameless Infography Canvas */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full flex items-center justify-center overflow-hidden py-4"
+        >
           <img
             src="/images/infography/figura-02-architecture-flow.png"
             alt="Arquitectura de inferencia local y flujo de memoria on-device"
-            className="w-full h-auto object-contain mx-auto rounded-xl"
+            className="w-full h-auto max-h-[88vh] object-contain mx-auto"
             loading="lazy"
           />
-        </div>
+        </motion.div>
 
         {/* Minimal Bottom Caption */}
-        <p className="font-serif italic text-xs sm:text-sm text-foreground-muted text-center max-w-3xl mx-auto">
-          El audio se procesa en memoria volátil con latencia ~12ms. Cero almacenamiento externo y total soberanía de datos.
+        <p className="font-serif italic text-xs sm:text-sm text-foreground-muted text-center max-w-4xl mx-auto pt-2">
+          El audio se procesa exclusivamente en la memoria RAM del equipo con latencia de ~12ms. Cero almacenamiento externo y total confidencialidad.
         </p>
-      </Container>
+      </div>
     </section>
   );
 }

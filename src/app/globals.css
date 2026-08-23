@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  /* Warm editorial paper palette (Ivory / Off-white / Warm Linen) */
+  /* Warm paper palette (Ivory / Off-white / Warm Linen) */
   --background: #FBF9F5;
   --paper: #F7F5F0;
-  --paper-warm: #F3EFE6;
+  --paper-warm: #F5F2EB;
   --paper-light: #FFFFFF;
   
   --surface: #F5F2EB;
@@ -19,19 +19,10 @@
   --foreground-faded: #9C9488;
   
   /* Delicate hairline editorial rules */
-  --border: #E6E0D4;
-  --border-strong: #D3CABA;
-  --border-subtle: #F0ECE4;
+  --border: #D8D2C5;
+  --border-strong: #C4BCAC;
+  --border-subtle: #EBE6DC;
   
-  /* Editorial accents (muted, desaturated print inks) */
-  --accent: #1C1917;
-  --accent-muted: #F0ECE4;
-  --accent-foreground: #1C1917;
-  
-  --success: #3D6047;
-  --warning: #9E782F;
-  --danger: #B94732;
-
   --font-geist-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-geist-mono: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
 }
@@ -46,7 +37,6 @@
     text-rendering: optimizeLegibility;
   }
   
-  /* Headings editorial defaults */
   h1, h2, h3, h4 {
     @apply font-serif tracking-tight text-foreground;
   }
@@ -57,31 +47,18 @@
   .bg-paper-texture {
     background-color: var(--background);
     background-image: 
-      radial-gradient(at 15% 15%, rgba(243, 239, 230, 0.6) 0px, transparent 50%),
-      radial-gradient(at 85% 85%, rgba(239, 235, 225, 0.5) 0px, transparent 50%);
+      radial-gradient(at 15% 15%, rgba(245, 242, 235, 0.7) 0px, transparent 50%),
+      radial-gradient(at 85% 85%, rgba(240, 236, 227, 0.6) 0px, transparent 50%);
   }
 
   .bg-editorial-grid {
     background-size: 32px 32px;
     background-image: 
-      linear-gradient(to right, rgba(230, 224, 212, 0.35) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(230, 224, 212, 0.35) 1px, transparent 1px);
+      linear-gradient(to right, rgba(216, 210, 197, 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(216, 210, 197, 0.3) 1px, transparent 1px);
   }
 
-  /* Notion / Print editorial card */
-  .print-card {
-    background-color: #FFFFFF;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 3px 0 rgba(28, 25, 23, 0.03), 0 1px 2px -1px rgba(28, 25, 23, 0.02);
-    border-radius: 4px;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-  .print-card:hover {
-    border-color: var(--border-strong);
-    box-shadow: 0 4px 14px -2px rgba(28, 25, 23, 0.05);
-  }
-
-  /* GPU-Accelerated Continuous Marquee Track (Smooth 60fps, Zero Layout Thrashing) */
+  /* GPU Marquee Track (Smooth 60fps) */
   .marquee-track {
     display: flex;
     width: max-content;
@@ -103,13 +80,13 @@
   }
 }
 
-/* Accessible focus ring styled like an editorial bracket */
+/* Accessible focus ring */
 :focus-visible {
   outline: 1.5px solid var(--foreground);
   outline-offset: 2px;
 }
 
-/* Reduced motion preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

@@ -11,27 +11,25 @@ export function Navbar() {
 
   const navLinks = [
     { label: "Folio", href: "#demo" },
-    { label: "Problem", href: "#problem" },
-    { label: "Instruments", href: "#capabilities" },
-    { label: "Method", href: "#how-it-works" },
-    { label: "Constitution", href: "#privacy" },
+    { label: "Infografías", href: "#infografias" },
+    { label: "Privacidad", href: "#privacidad" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#D8D2C5] bg-[#F5F2EB]">
-      <Container className="flex h-13 items-center justify-between py-2">
+      <Container className="flex h-14 items-center justify-between py-2">
         {/* Left: Serif Brand Imprint */}
         <div className="flex items-center gap-6">
           <a
             href="#"
             className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
-            aria-label="Dolphin Home"
+            aria-label="Dolphin Inicio"
           >
             <DolphinLogo size={20} />
           </a>
 
           {/* Editorial Navigation */}
-          <nav className="hidden lg:flex items-center gap-5 border-l border-[#D8D2C5] pl-5" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-5 border-l border-[#D8D2C5] pl-5" aria-label="Navegación Principal">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -47,7 +45,7 @@ export function Navbar() {
         {/* Center: Masthead Session Status in Small-Caps */}
         <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
           <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage shrink-0" />
-          <span>Local Substrate · QVAC Engine Operational</span>
+          <span>Sustrato Local · Motor QVAC Operativo</span>
         </div>
 
         {/* Right: Indispensable Controls Only */}
@@ -58,15 +56,15 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-[11px] text-foreground-muted hover:text-foreground transition-colors underline underline-offset-4 decoration-[#D8D2C5] hover:decoration-foreground"
           >
-            <span>Repository</span>
+            <span>Repositorio</span>
             <ArrowUpRight className="w-3 h-3 opacity-60" />
           </a>
 
           <a
             href="#demo"
-            className="inline-flex items-center justify-center px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-foreground bg-[#FBF9F5] border border-[#D8D2C5] rounded-[3px] hover:border-foreground transition-colors"
+            className="inline-flex items-center justify-center px-3.5 py-1 text-[11px] font-mono uppercase tracking-wider text-foreground bg-[#FBF9F5] border border-[#D8D2C5] rounded-[3px] hover:border-foreground transition-colors"
           >
-            Examine Folio
+            Ver Folio
           </a>
         </div>
 
@@ -76,7 +74,7 @@ export function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden p-1.5 text-foreground-muted hover:text-foreground rounded-[3px] border border-[#D8D2C5]"
           aria-expanded={mobileMenuOpen}
-          aria-label="Toggle navigation menu"
+          aria-label="Abrir menú"
         >
           {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
@@ -87,7 +85,7 @@ export function Navbar() {
         <div className="lg:hidden border-t border-[#D8D2C5] bg-[#F5F2EB] px-4 py-3 space-y-2.5">
           <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-foreground-muted pb-2 border-b border-[#E3DEC3]">
             <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage" />
-            <span>Local Substrate · Active</span>
+            <span>Sustrato Local · Activo</span>
           </div>
           <nav className="flex flex-col space-y-1.5 pt-1">
             {navLinks.map((link) => (
@@ -108,7 +106,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-foreground-muted hover:text-foreground underline underline-offset-4"
             >
-              GitHub Source ↗
+              Código en GitHub ↗
             </a>
           </div>
         </div>

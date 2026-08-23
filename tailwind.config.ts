@@ -46,16 +46,6 @@ const config: Config = {
           lavender: "#535E7E",
           "lavender-bg": "#EFF1F7",
         },
-        accent: {
-          DEFAULT: "var(--accent)",
-          muted: "var(--accent-muted)",
-          foreground: "var(--accent-foreground)",
-        },
-        status: {
-          success: "#3D6047",
-          warning: "#9E782F",
-          danger: "#B94732",
-        },
       },
       fontFamily: {
         serif: [
@@ -67,13 +57,21 @@ const config: Config = {
           "Cambria",
           "serif",
         ],
-        sans: ["var(--font-geist-sans)", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         mono: ["var(--font-geist-mono)", "JetBrains Mono", "SF Mono", "Menlo", "Consolas", "monospace"],
       },
       boxShadow: {
-        card: "0 1px 3px 0 rgba(28, 25, 23, 0.04), 0 1px 2px -1px rgba(28, 25, 23, 0.03)",
         paper: "0 4px 20px -2px rgba(28, 25, 23, 0.05), 0 1px 3px 0 rgba(28, 25, 23, 0.03)",
-        press: "inset 0 1px 2px 0 rgba(28, 25, 23, 0.04)",
+        card: "0 1px 3px 0 rgba(28, 25, 23, 0.04), 0 1px 2px -1px rgba(28, 25, 23, 0.03)",
+      },
+      animation: {
+        marquee: "marquee 40s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(-50%, 0, 0)" },
+        },
       },
     },
   },
