@@ -19,25 +19,25 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground flex flex-col font-sans relative">
         <Navbar />
 
-        {/* Top Edge Diffusion (Positioned directly below the 80px Navbar) */}
+        {/* High-Intensity Top Edge Diffusion (Directly below 80px Navbar, strong blur) */}
         <div 
-          className="fixed top-20 inset-x-0 h-10 sm:h-12 pointer-events-none z-40 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/80 to-transparent backdrop-blur-[6px]" 
+          className="fixed top-20 inset-x-0 h-10 sm:h-12 pointer-events-none z-40 bg-gradient-to-b from-[#FBF9F5] via-[#FBF9F5]/90 to-transparent backdrop-blur-xl" 
           aria-hidden="true" 
         />
 
-        {/* Bottom Edge Diffusion */}
+        {/* High-Intensity Bottom Edge Diffusion (Strong blur, same compact reach) */}
         <div 
-          className="fixed bottom-0 inset-x-0 h-10 sm:h-12 pointer-events-none z-40 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/80 to-transparent backdrop-blur-[6px]" 
+          className="fixed bottom-0 inset-x-0 h-10 sm:h-12 pointer-events-none z-40 bg-gradient-to-t from-[#FBF9F5] via-[#FBF9F5]/90 to-transparent backdrop-blur-xl" 
           aria-hidden="true" 
         />
 
-        {/* Lateral Soft Edge Diffusion (From below Navbar to bottom) */}
+        {/* High-Intensity Lateral Diffusions (Left & Right with backdrop-blur) */}
         <div 
-          className="fixed left-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-40 bg-gradient-to-r from-[#FBF9F5] via-[#FBF9F5]/60 to-transparent" 
+          className="fixed left-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-40 bg-gradient-to-r from-[#FBF9F5] via-[#FBF9F5]/80 to-transparent backdrop-blur-md" 
           aria-hidden="true" 
         />
         <div 
-          className="fixed right-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-40 bg-gradient-to-l from-[#FBF9F5] via-[#FBF9F5]/60 to-transparent" 
+          className="fixed right-0 top-20 bottom-0 w-4 sm:w-8 pointer-events-none z-40 bg-gradient-to-l from-[#FBF9F5] via-[#FBF9F5]/80 to-transparent backdrop-blur-md" 
           aria-hidden="true" 
         />
 
