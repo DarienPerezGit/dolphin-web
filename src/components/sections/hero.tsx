@@ -20,7 +20,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-24 px-4 sm:px-6">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-20 px-4 sm:px-6">
       {/* 1. Fullscreen Looping Video Background starting from the absolute top (behind Navbar) */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
         <video
@@ -39,34 +39,34 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/35 mix-blend-multiply" />
       </div>
 
-      <Container className="max-w-5xl flex justify-center relative z-10">
-        {/* 2. Real Dark Glassmorphism Card (Translucent, deep blur, micro-border) */}
+      <Container className="max-w-4xl flex justify-center relative z-10">
+        {/* 2. Compact Dark Glassmorphism Card (Refined scale and proportions) */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[960px] rounded-[24px] bg-slate-900/30 px-6 py-16 sm:px-12 sm:py-20 text-center backdrop-blur-lg border border-white/10 shadow-2xl shadow-black/50"
+          className="w-full max-w-[800px] rounded-[22px] bg-slate-900/30 px-6 py-12 sm:px-10 sm:py-14 text-center backdrop-blur-lg border border-white/10 shadow-2xl shadow-black/50"
         >
-          {/* Hero Title */}
-          <h1 className="font-sans text-[clamp(40px,5vw,68px)] font-medium leading-[1.05] tracking-[-0.02em] text-white">
+          {/* Hero Title (Scaled down for compact editorial elegance) */}
+          <h1 className="font-sans text-[clamp(32px,3.8vw,52px)] font-medium leading-[1.08] tracking-[-0.02em] text-white">
             Entiende la reunión <br className="hidden sm:inline" />
             <span className="text-white/70">mientras está pasando.</span>
           </h1>
 
           {/* Hero Subtitle */}
-          <p className="mx-auto mt-8 max-w-[760px] font-sans text-[clamp(18px,2vw,24px)] font-normal leading-[1.4] text-white/85">
+          <p className="mx-auto mt-6 max-w-[620px] font-sans text-[clamp(16px,1.6vw,20px)] font-normal leading-[1.4] text-white/85">
             Dolphin sintetiza acuerdos, detecta inconsistencias inadvertidas y traduce jerga técnica a lenguaje de negocio en tiempo real, 100% en tu propio ordenador.
           </p>
 
           {/* 3. Inverted Buttons (Botón 1: Dark Glass | Botón 2: Solid White Standout) */}
-          <div className="mt-12 sm:mt-14 flex flex-wrap items-center justify-center gap-5">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             {/* Botón 1: Cristal Oscuro (Explorar Simulación) */}
             <button
               type="button"
               onClick={() => {
                 document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="inline-flex h-14 items-center justify-center rounded-[14px] bg-black/40 px-8 text-base font-medium text-white border border-white/20 shadow-sm transition-all hover:bg-black/60 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+              className="inline-flex h-13 sm:h-14 items-center justify-center rounded-[14px] bg-black/40 px-7 sm:px-8 text-sm sm:text-base font-medium text-white border border-white/20 shadow-sm transition-all hover:bg-black/60 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
             >
               <span>Explorar Simulación</span>
             </button>
@@ -76,7 +76,7 @@ export function Hero() {
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 items-center justify-center rounded-[14px] bg-white px-8 text-base font-medium text-slate-900 shadow-xl transition-all hover:bg-slate-100 hover:scale-[1.01] active:scale-[0.99]"
+              className="inline-flex h-13 sm:h-14 items-center justify-center rounded-[14px] bg-white px-7 sm:px-8 text-sm sm:text-base font-medium text-slate-900 shadow-xl transition-all hover:bg-slate-100 hover:scale-[1.01] active:scale-[0.99]"
             >
               <span>Ver Código en GitHub</span>
             </a>
