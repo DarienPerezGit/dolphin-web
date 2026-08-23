@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -6,51 +7,35 @@ interface LogoProps {
   size?: number | "sm" | "md" | "lg";
   showBadge?: boolean;
   showText?: boolean;
+  textColor?: string;
 }
 
 export function DolphinLogo({
   className,
-  size = 22,
+  size = 34,
   showText = true,
+  textColor = "text-white",
 }: {
   className?: string;
   size?: number;
   showText?: boolean;
+  textColor?: string;
 }) {
   return (
-    <div className={cn("inline-flex items-center gap-2.5 select-none group", className)}>
-      {/* Ink-drawn woodblock/press emblem */}
-      <div
-        className="relative flex items-center justify-center rounded-[4px] border border-border-strong bg-surface text-foreground p-1 transition-colors group-hover:border-foreground"
-        style={{ width: size + 6, height: size + 6 }}
-        aria-hidden="true"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full stroke-current"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {/* Refined single-line ink acoustic crest & dolphin arc */}
-          <path d="M4 14.5C6.5 9 11.5 6 18 7.5C18.2 8.5 17.5 9.2 16.5 9.5C12.5 10.5 8.8 13.5 7.5 18" />
-          <path d="M12 6.5C12 4.5 13.5 3.5 15 4.5" />
-          <circle cx="17.5" cy="7.5" r="1" fill="currentColor" />
-          <path d="M13 14C14.5 13 16.5 12.8 18.5 13" strokeWidth="1.2" strokeDasharray="1.5 2" />
-        </svg>
-      </div>
+    <div className={cn("inline-flex items-center gap-3.5 select-none group", className)}>
+      <img
+        src="/images/logo.png"
+        alt="Dolphin Logo"
+        width={size}
+        height={size}
+        className="h-auto object-contain transition-transform duration-200 group-hover:scale-105"
+        style={{ width: size, height: size }}
+      />
 
       {showText && (
-        <div className="flex items-baseline gap-2">
-          <span className="font-serif text-lg sm:text-xl font-medium tracking-tight text-foreground">
-            Dolphin
-          </span>
-          <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-widest text-foreground-faded px-1.5 py-0.5 rounded-[3px] border border-border-subtle bg-paper">
-            v1.0 / Local
-          </span>
-        </div>
+        <span className={cn("font-serif text-[20px] font-semibold tracking-[0.15em] leading-none", textColor)}>
+          Dolphin
+        </span>
       )}
     </div>
   );
@@ -60,13 +45,14 @@ export function Logo({
   className,
   size = "md",
   showBadge = true,
+  textColor = "text-white",
 }: LogoProps) {
   const pixelSizes = {
-    sm: 18,
-    md: 22,
-    lg: 26,
+    sm: 28,
+    md: 34,
+    lg: 42,
   };
   const finalSize = typeof size === "number" ? size : pixelSizes[size];
 
-  return <DolphinLogo className={className} size={finalSize} showText={true} />;
+  return <DolphinLogo className={className} size={finalSize} showText={true} textColor={textColor} />;
 }

@@ -6,20 +6,20 @@ import { Privacy } from "@/components/sections/privacy";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col w-full bg-[#FBF9F5]">
-      {/* 1. Encabezado / Hero */}
+    <div className="flex flex-col w-full bg-[#FAF8F5]">
+      {/* 1. Hero & Live Notepad Preview */}
       <Hero />
 
-      {/* 2. Carrusel Continuo de Gran Formato (Alto impacto visual inmediato) */}
+      {/* 2. Continuous Marquee Showcase with Interactive Background Boxes */}
       <HeroCarousel />
 
-      {/* 3. Infografías Editoriales Centrales (Casi toda la pantalla, legibles a simple vista) */}
+      {/* 3. Central Cognitive Map Infography */}
       <EditorialInfographies />
 
-      {/* 4. Simulación Interactiva en Vivo */}
+      {/* 4. Live Interactive Meeting Simulation */}
       <DemoSection />
 
-      {/* 5. Constitución de Privacidad & Soberanía Local */}
+      {/* 5. Privacy by Design & On-Device Comparison */}
       <Privacy />
     </div>
   );

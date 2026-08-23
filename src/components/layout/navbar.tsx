@@ -4,39 +4,38 @@ import React, { useState } from "react";
 import { Container } from "./container";
 import { DolphinLogo } from "../ui/logo";
 import { PRODUCT_INFO } from "@/content/mock-data";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Exact 3 sections of the landing page
   const navLinks = [
-    { label: "Folio", href: "#demo" },
-    { label: "Problem", href: "#problem" },
-    { label: "Instruments", href: "#capabilities" },
-    { label: "Method", href: "#how-it-works" },
-    { label: "Constitution", href: "#privacy" },
+    { label: "Infografías", href: "#infografias" },
+    { label: "Simulación", href: "#demo" },
+    { label: "Privacidad", href: "#privacy" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#D8D2C5] bg-[#F5F2EB]">
-      <Container className="flex h-13 items-center justify-between py-2">
-        {/* Left: Serif Brand Imprint */}
-        <div className="flex items-center gap-6">
+    <header className="absolute top-0 left-0 right-0 z-50 w-full border-b border-stone-200/70 bg-transparent">
+      <Container className="flex h-20 max-w-6xl items-center justify-between">
+        {/* Left: Brand Identity with Dark Text */}
+        <div className="flex items-center gap-10">
           <a
             href="#"
-            className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
-            aria-label="Dolphin Home"
+            className="flex items-center gap-3 focus-visible:outline-none"
+            aria-label="Dolphin Inicio"
           >
-            <DolphinLogo size={20} />
+            <DolphinLogo size={40} textColor="text-stone-900" />
           </a>
 
-          {/* Editorial Navigation */}
-          <nav className="hidden lg:flex items-center gap-5 border-l border-[#D8D2C5] pl-5" aria-label="Main Navigation">
+          {/* Clean 3-Item Navigation in Dark Ink */}
+          <nav className="hidden md:flex items-center gap-8 font-sans" aria-label="Navegación Principal">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[11px] font-mono tracking-wider text-foreground-muted hover:text-foreground transition-colors uppercase"
+                className="text-[14px] font-normal leading-normal tracking-[-0.01em] text-stone-600 hover:text-stone-950 transition-colors"
               >
                 {link.label}
               </a>
@@ -44,71 +43,53 @@ export function Navbar() {
           </nav>
         </div>
 
-        {/* Center: Masthead Session Status in Small-Caps */}
-        <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
-          <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage shrink-0" />
-          <span>Local Substrate · QVAC Engine Operational</span>
-        </div>
-
-        {/* Right: Indispensable Controls Only */}
-        <div className="hidden sm:flex items-center gap-4 font-mono text-xs">
+        {/* Right: Clean GitHub Link in Dark Ink */}
+        <div className="hidden md:flex items-center gap-4 font-sans">
           <a
             href={PRODUCT_INFO.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[11px] text-foreground-muted hover:text-foreground transition-colors underline underline-offset-4 decoration-[#D8D2C5] hover:decoration-foreground"
+            className="text-[14px] font-normal leading-normal tracking-[-0.01em] text-stone-600 hover:text-stone-950 transition-colors"
           >
-            <span>Repository</span>
-            <ArrowUpRight className="w-3 h-3 opacity-60" />
-          </a>
-
-          <a
-            href="#demo"
-            className="inline-flex items-center justify-center px-3 py-1 text-[11px] font-mono uppercase tracking-wider text-foreground bg-[#FBF9F5] border border-[#D8D2C5] rounded-[3px] hover:border-foreground transition-colors"
-          >
-            Examine Folio
+            GitHub
           </a>
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile menu toggle in Dark Ink */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-1.5 text-foreground-muted hover:text-foreground rounded-[3px] border border-[#D8D2C5]"
+          className="md:hidden p-2 text-stone-700 hover:text-stone-950 rounded-lg"
           aria-expanded={mobileMenuOpen}
-          aria-label="Toggle navigation menu"
+          aria-label="Alternar menú de navegación"
         >
-          {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </Container>
 
-      {/* Mobile menu dropdown */}
+      {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#D8D2C5] bg-[#F5F2EB] px-4 py-3 space-y-2.5">
-          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-foreground-muted pb-2 border-b border-[#E3DEC3]">
-            <span className="w-1.5 h-1.5 rounded-full bg-editorial-sage" />
-            <span>Local Substrate · Active</span>
-          </div>
-          <nav className="flex flex-col space-y-1.5 pt-1">
+        <div className="md:hidden border-t border-stone-200 bg-white/95 backdrop-blur-xl px-6 py-4 space-y-3 font-sans shadow-lg">
+          <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-mono uppercase tracking-wider text-foreground-muted hover:text-foreground py-1"
+                className="text-[14px] font-normal leading-normal tracking-[-0.01em] text-stone-800 hover:text-stone-950 py-1"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <div className="pt-2 border-t border-[#E3DEC3] flex items-center justify-between text-xs font-mono">
+          <div className="pt-2 border-t border-stone-100">
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground-muted hover:text-foreground underline underline-offset-4"
+              className="text-[14px] font-normal leading-normal tracking-[-0.01em] text-stone-600 hover:text-stone-950 block py-1"
             >
-              GitHub Source ↗
+              GitHub
             </a>
           </div>
         </div>
