@@ -7,67 +7,52 @@ import { PRODUCT_INFO } from "@/content/mock-data";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-stone-50 py-24 sm:py-32">
-      {/* Subtle ambient light aura */}
-      <div 
-        className="pointer-events-none absolute -top-48 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-stone-200/40 via-stone-100/20 to-transparent blur-3xl"
-        aria-hidden="true" 
-      />
-
-      <Container className="max-w-6xl">
-        <div className="flex flex-col items-center text-center">
-          
-          {/* 1. Strict Hero Title (Anti-Boxed, Pure Sans-serif, High Impact) */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(48px,5.2vw,72px)] font-normal leading-[1.02] tracking-[-0.03em] text-stone-950 font-sans"
-          >
+    <section className="relative flex items-center justify-center py-20 md:py-28 px-4 sm:px-6">
+      <Container className="max-w-5xl flex justify-center">
+        
+        {/* Dark Glassmorphic Card Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-[960px] rounded-[24px] bg-slate-950/45 px-6 py-16 sm:px-12 sm:py-20 text-center backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/40"
+        >
+          {/* Hero Title */}
+          <h1 className="font-sans text-[clamp(40px,5vw,68px)] font-medium leading-[1.05] tracking-[-0.02em] text-white">
             Entiende la reunión <br className="hidden sm:inline" />
-            <span className="text-stone-500 font-normal">mientras está pasando.</span>
-          </motion.h1>
+            <span className="text-white/70">mientras está pasando.</span>
+          </h1>
 
-          {/* 2. Hero Subtitle (Folk Warmth, Generous Width, Strict Sans-serif) */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-3xl text-xl sm:text-2xl font-normal leading-[1.3] text-stone-600 font-sans"
-          >
+          {/* Hero Subtitle */}
+          <p className="mx-auto mt-8 max-w-[760px] font-sans text-[clamp(18px,2vw,24px)] font-normal leading-[1.4] text-white/85">
             Dolphin sintetiza acuerdos, detecta inconsistencias inadvertidas y traduce jerga técnica a lenguaje de negocio en tiempo real, 100% en tu propio ordenador.
-          </motion.p>
+          </p>
 
-          {/* 3. Action Invocations (Folk Geometry, Pure Text Buttons) */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
-          >
-            {/* Primary Action Button */}
+          {/* Actions (Botones estilizados) */}
+          <div className="mt-12 sm:mt-14 flex flex-wrap items-center justify-center gap-5">
+            {/* Primary Solid Button */}
             <button
               type="button"
               onClick={() => {
                 document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="inline-flex h-14 items-center justify-center rounded-[14px] bg-stone-900 px-8 text-base font-medium text-white shadow-lg shadow-stone-900/10 transition-all hover:bg-stone-800 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+              className="inline-flex h-14 items-center justify-center rounded-[14px] bg-white px-8 text-base font-medium text-slate-900 shadow-md transition-all hover:bg-zinc-100 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
             >
               <span>Explorar Simulación</span>
             </button>
 
-            {/* Secondary Action Button */}
+            {/* Secondary Glass Button */}
             <a
               href={PRODUCT_INFO.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 items-center justify-center rounded-[14px] border border-stone-200/90 bg-white/80 px-8 text-base font-medium text-stone-800 shadow-2xs transition-all hover:bg-white hover:border-stone-300 hover:scale-[1.01] active:scale-[0.99]"
+              className="inline-flex h-14 items-center justify-center rounded-[14px] bg-black/35 px-8 text-base font-medium text-white border border-white/15 shadow-sm transition-all hover:bg-black/55 hover:scale-[1.01] active:scale-[0.99]"
             >
               <span>Ver Código en GitHub</span>
             </a>
-          </motion.div>
+          </div>
+        </motion.div>
 
-        </div>
       </Container>
     </section>
   );
