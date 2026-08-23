@@ -19,7 +19,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-stone-200/80 bg-stone-50/90 backdrop-blur-md">
       <Container className="flex h-20 max-w-6xl items-center justify-between">
-        {/* Left: Brand Identity */}
+        {/* Left: Brand Identity with 42px Logo */}
         <div className="flex items-center gap-10">
           <a
             href="#"
@@ -30,7 +30,7 @@ export function Navbar() {
           </a>
 
           {/* Clean 3-Item Navigation (Strict Sans-serif, Clean Whitespace) */}
-          <nav className="hidden md:flex items-center gap-6" aria-label="Navegación Principal">
+          <nav className="hidden md:flex items-center gap-8" aria-label="Navegación Principal">
             {navLinks.map((link) => (
               <a
                 key={link.href}

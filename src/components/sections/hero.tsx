@@ -1,33 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Container } from "../layout/container";
 import { PRODUCT_INFO } from "@/content/mock-data";
 
 export function Hero() {
-  // Superhuman-style seamless keyboard shortcuts listener
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (["INPUT", "TEXTAREA"].includes((e.target as HTMLElement)?.tagName)) return;
-
-      if (e.code === "Space") {
-        e.preventDefault();
-        document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
-      }
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        window.open(PRODUCT_INFO.githubUrl, "_blank", "noopener,noreferrer");
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
   return (
     <section className="relative overflow-hidden bg-stone-50 py-24 sm:py-32">
-      {/* Kled-style airy ambient light wash (Borderless, purely diffuse) */}
+      {/* Subtle ambient light aura */}
       <div 
         className="pointer-events-none absolute -top-48 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-b from-stone-200/40 via-stone-100/20 to-transparent blur-3xl"
         aria-hidden="true" 
@@ -57,7 +38,7 @@ export function Hero() {
             Dolphin sintetiza acuerdos, detecta inconsistencias inadvertidas y traduce jerga técnica a lenguaje de negocio en tiempo real, 100% en tu propio ordenador.
           </motion.p>
 
-          {/* 3. Action Invocations (Folk Geometry + Integrated Mimetized Shortcuts) */}
+          {/* 3. Action Invocations (Folk Geometry, Pure Text Buttons) */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
