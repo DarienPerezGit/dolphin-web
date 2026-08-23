@@ -20,8 +20,8 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[calc(100vh-120px)] items-center justify-center overflow-hidden py-16 md:py-24 px-4 sm:px-6">
-      {/* 1. Fullscreen Looping Video Background (100% viewport coverage, zero white gradient cut) */}
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-24 px-4 sm:px-6">
+      {/* 1. Fullscreen Looping Video Background starting from the absolute top (behind Navbar) */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
         <video
           ref={videoRef}

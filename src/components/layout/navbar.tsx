@@ -17,7 +17,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-transparent">
+    <header className="absolute top-0 left-0 right-0 z-50 w-full border-b border-white/10 bg-transparent">
       <Container className="flex h-20 max-w-6xl items-center justify-between">
         {/* Left: Brand Identity with White Text */}
         <div className="flex items-center gap-10">
